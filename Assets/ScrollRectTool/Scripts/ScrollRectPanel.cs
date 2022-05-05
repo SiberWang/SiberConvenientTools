@@ -324,6 +324,11 @@ namespace CustomTool.UIScrollRect
                 }
             }
         }
+        
+        public void SetCellBack(Action<GameObject, int> cellBack)
+        {
+            m_CallBackAction = cellBack;
+        }
 
     #endregion
 

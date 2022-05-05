@@ -42,27 +42,29 @@ namespace CustomTool.UIScrollRect
 
         private Dictionary<string, TempData> tempDatas = new Dictionary<string, TempData>();
 
+        private List<TempData> tempDataList;
         private List<TempData> currentDataList;
+        private bool           isCreated;
 
     #endregion
 
     #region Unity events
 
-        private void Start()
+        private void OnEnable()
         {
-            //Store Data
-            StoreDataToList();
-            //Create ScrollRectPanel
-            CreateScrollRectPanel();
+            if (Application.isPlaying)
+            {
+                Debug.Log("Start ScrollRectExampleHandler");
+                //Store Data
+                StoreDataToList();
+                //Create ScrollRectPanel
+                CreateScrollRectPanel();
+            }
         }
 
-        private void Update()
+        private void OnDisable()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                scrollRectPanel.ShowList(cellCount);
-                scrollRectPanel.UpdateList();
-            }
+            // tempDatas.Clear();
         }
 
     #endregion
@@ -73,6 +75,7 @@ namespace CustomTool.UIScrollRect
         private void StoreDataToList()
         {
             if (cardDataOverview == null) Debug.LogError("CardDataOverview is null");
+            Debug.Log($"----- Load Datas -----");
             var cardDatas = cardDataOverview.FindDatas();
             foreach (var cardData in cardDatas)
             {
@@ -81,13 +84,15 @@ namespace CustomTool.UIScrollRect
                 tempData.name     = cardData.name;
                 tempData.id       = cardData.id;
                 tempData.cardType = cardData.cardType;
-                tempDatas.Add(tempData.id, tempData);
+                if (!tempDatas.ContainsKey(tempData.id))
+                    tempDatas.Add(tempData.id, tempData);
             }
 
             // 暫存需要用到的資料到List中，並排好順序
-            currentDataList = OrderByUnits(new List<TempData>(tempDatas.Values));
-            if (currentDataList != null) cellCount = currentDataList.Count;
-            foreach (var data in currentDataList)
+            tempDataList = OrderByUnits(new List<TempData>(tempDatas.Values));
+            if (tempDataList != null) cellCount = tempDataList.Count;
+            currentDataList = tempDataList;
+            foreach (var data in tempDataList)
             {
                 Debug.Log($"data : {data.name} {data.id}");
             }
@@ -119,7 +124,12 @@ namespace CustomTool.UIScrollRect
 
         private void CreateScrollRectPanel()
         {
-            scrollRectPanel.Init(cellPrefab, scrollRect, LoadInfoCallBack);
+            if (!isCreated)
+            {
+                scrollRectPanel.Init(cellPrefab, scrollRect, LoadInfoCallBack);
+                isCreated = true;
+            }
+
             scrollRectPanel.ShowList(cellCount);
         }
 
@@ -132,16 +142,29 @@ namespace CustomTool.UIScrollRect
             // Debug.Log(Regex.Match("anything 876 anything", @"\d+\.*\d*").Value);
             // Debug.Log(Regex.Match("$876435", @"\d+\.*\d*").Value);
             // Debug.Log(Regex.Match("$876.435", @"\d+\.*\d*").Value);
-
+            Debug.Log($"OrderByUnits");
             return units.OrderBy(x =>
             {
                 // 利用大小來排序
                 var targetID = x.id;
-                // var id       = targetID.Replace("#", "");
-                var id    = Regex.Match($"{targetID}", @"\d+\.*\d*").Value;
-                var intID = int.Parse(id);
+                var id       = Regex.Match($"{targetID}", @"\d+\.*\d*").Value;
+                var intID    = int.Parse(id);
                 return intID;
             }).ToList();
+        }
+
+        public void OnSelectCardType(string cardType)
+        {
+            List<TempData> selectDataList = null;
+            if (cardType == CardType.Attack.ToString())
+                selectDataList = tempDataList.Where(card => card.cardType == CardType.Attack).ToList();
+            if (cardType == CardType.Heal.ToString())
+                selectDataList = tempDataList.Where(card => card.cardType == CardType.Heal).ToList();
+            if (cardType == CardType.Spawn.ToString())
+                selectDataList = tempDataList.Where(card => card.cardType == CardType.Spawn).ToList();
+
+            currentDataList = selectDataList;
+            scrollRectPanel.ShowList(currentDataList.Count);
         }
 
     #endregion
