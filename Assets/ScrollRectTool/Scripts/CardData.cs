@@ -10,7 +10,6 @@ namespace CustomTool.UIScrollRect
         public string   name;
         public string   id;
         public CardType cardType;
-        public Color    bgColor;
 
     #endregion
     }

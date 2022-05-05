@@ -506,7 +506,7 @@ namespace CustomTool.UIScrollRect
         /// <param name="selectObject">由於物件命名為數字，利用名稱當編號</param>
         private void DoAction(Action<GameObject, int> action, GameObject selectObject)
         {
-            var num = int.Parse(selectObject.name) + 1;
+            var num = int.Parse(selectObject.name);
             action?.Invoke(selectObject, num);
         }
 

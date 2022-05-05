@@ -1854,10 +1854,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellCount: 35
-  scrollRect: {fileID: 888019459}
   cellPrefab: {fileID: 4411578191175140966, guid: 8f6c4311eb3624048a6c4d65f9726113, type: 3}
+  scrollRect: {fileID: 888019459}
   scrollRectPanel: {fileID: 1583423254}
-  cardDataOverview: {fileID: 0}
+  cardDataOverview: {fileID: 11400000, guid: 1fddbf9645d456e47ac0c9736528363c, type: 2}
 --- !u!224 &1646908570 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4411578191175140967, guid: 8f6c4311eb3624048a6c4d65f9726113, type: 3}

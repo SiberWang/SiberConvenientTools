@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc152227891490f990a5b148a62b50f, type: 3}
   m_Name: CardData_07
   m_EditorClassIdentifier: 
-  name: Keran
+  name: Dana
   id: '#Actor_007'
-  cardType: 0
-  bgColor: {r: 1, g: 0.33490568, b: 0.33490568, a: 1}
+  cardType: 2

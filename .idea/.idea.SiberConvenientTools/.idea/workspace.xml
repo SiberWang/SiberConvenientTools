@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Prefabs/CellSample.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Prefabs/CellSample.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CardData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CardData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CardDataOverview.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CardDataOverview.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CellSample.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CellSample.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CardData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CardData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CardDataOverview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CardDataOverview.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CellSample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CellSample.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectExampleHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectExampleHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +43,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "rider.run.widget.enabled.cache": "false",
+    "settings.editor.selected.configurable": "RiderNuGetOptionsPageId",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -92,6 +86,10 @@
       <option name="presentableId" value="Default" />
       <updated>1651673586418</updated>
       <workItem from="1651673589925" duration="2721000" />
+      <workItem from="1651713508995" duration="104000" />
+      <workItem from="1651713680789" duration="792000" />
+      <workItem from="1651714704414" duration="704000" />
+      <workItem from="1651715533623" duration="2968000" />
     </task>
     <servers />
   </component>
@@ -101,6 +99,319 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="UnknownFeatures">
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.TextCoreTextEngineModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Razor" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.InteropServices" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UniTask.TextMeshPro" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IdentityModel.Selectors" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Mobile" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Security.Cryptography.Encoding" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.PhysicsModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Zenject.ReflectionBaking.Mono.Cecil.Pdb" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UIElementsNativeModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.SpriteShapeModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.Requests" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ComponentModel.Composition" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Data.Common" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UnityCurlModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.FileSystem.Primitives" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UnityWebRequestAudioModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Globalization.Extensions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Security.Principal" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.GridModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.AppContext" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.IsolatedStorage" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceModel.Routing" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.CoreModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Json" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ObjectModel" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.Pipes" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UniTask.Linq" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UNETModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="MessagePipe.Zenject" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.Http" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Threading.Overlapped" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Security.Claims" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Globalization" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.DSPGraphModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Design" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Diagnostics.FileVersionInfo" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Security.Cryptography.X509Certificates" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Xml.Serialization" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Caching" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.FileSystem" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.Compression.ZipFile" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Collections.Concurrent" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.RegularExpressions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.StreamingModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceModel.Http" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.UnmanagedMemoryStream" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.TextCoreFontEngineModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Drawing.Primitives" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.TilemapModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Drawing" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Handles" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Json.Microsoft" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Memory" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.GameCenterModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.ApplicationServices" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Dynamic.Runtime" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.Observable.Aliases" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Remoting" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.TLSModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UniTask" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Xml.XmlSerializer" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Routing" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Threading" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Collections.NonGeneric" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.AndroidJNIModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UnityWebRequestWWWModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Security.Cryptography.Algorithms" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Threading.ThreadPool" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reflection.DispatchProxy" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.AssetBundleModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Zenject.ReflectionBaking.Mono.Cecil" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Serialization.Formatters.Soap" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.Http.Formatting" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Threading.Tasks.Parallel" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Serialization.Formatters" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UnityWebRequestAssetBundleModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.Compression" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Configuration" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceModel.Web" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.DirectoryServices.Protocols" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Xaml" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceModel.Activation" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.Interfaces" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Data.Services" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.Linq" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ComponentModel.Primitives" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Diagnostics.Tools" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.DirectorModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.Security" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.ClusterRendererModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Threading.Tasks.Dataflow" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.CompilerServices.VisualC" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UI" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Data.Entity" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Security.SecureString" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.Providers" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceModel.NetTcp" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ValueTuple" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Xml.XmlDocument" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.TerrainPhysicsModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.ClusterInputModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceModel.Duplex" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.TextRenderingModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.WebPages.Deployment" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.Debugger" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.Http.Rtc" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.VFXModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.DynamicData" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Abstractions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Threading.Timer" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Windows.Forms" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Xml.ReaderWriter" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.FileSystem.Watcher" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.InteropServices.WindowsRuntime" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reflection.Emit" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.TestRunner" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.ProfilerModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Messaging" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Zenject.ReflectionBaking.Mono.Cecil.Mdb" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Diagnostics.Process" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Diagnostics.TextWriterTraceListener" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.CoreModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UnityTestProtocolModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.WindModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.ARModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Collections" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.WebPages.Razor" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.SpriteMaskModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.Core" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.WebPages" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UnityConnectModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.SubsystemsModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reflection.Emit.ILGeneration" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Serialization.Json" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Diagnostics.Debug" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UniTask.Addressables" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Zenject-PoolMonitor-Editor" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UniRx" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.PlatformServices" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.JSONSerializeModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Security.Cryptography.Primitives" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="nunit.framework" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Threading.Thread" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Resources.Writer" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Buffers" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.HotReloadModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.EnterpriseServices" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Http.WebHost" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Data.Services.Client" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.NetworkInformation" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.NVIDIAModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Threading.Tasks" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UIElementsModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Unity.Rider.Editor" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Xml.XPath.XDocument" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.IMGUIModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Security.Cryptography.Csp" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.TextCoreTextEngineModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceProcess" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Serialization.Xml" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Zenject-ReflectionBaking-Editor" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ComponentModel.TypeConverter" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Deployment" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.XRModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.GIModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Services" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.Ping" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.AIModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Extensions.Design" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Xml.Linq" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.VRModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Unity.2D.Sprite.Editor" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IdentityModel" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Windows.Forms.DataVisualization" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Text.Encoding.Extensions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Threading.Tasks.Extensions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.FileSystem.DriveInfo" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.CrashReportingModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.AccessibilityModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.SubstanceModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Zenject-Editor" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Unity.TextMeshPro.Editor" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.Sockets" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.ParticleSystemModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.TestRunner" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="netstandard" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Diagnostics.Contracts" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="mscorlib" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ComponentModel.Annotations" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Resources.ResourceManager" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Linq.Queryable" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Text.RegularExpressions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.InputModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.ImageConversionModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.UIElementsModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Zenject.ReflectionBaking.Mono.Cecil.Rocks" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.InteropServices.RuntimeInformation" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="NSubstitute" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.Http.WebRequest" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Data.OracleClient" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Console" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UnityWebRequestTextureModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Workflow.Runtime" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Configuration.Install" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Microsoft.CSharp" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ComponentModel.DataAnnotations" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UnityWebRequestModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.SharedInternalsModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Diagnostics.Tracing" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Linq" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reflection.Context" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.VideoModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Data.Linq" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Serialization.Primitives" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Workflow.ComponentModel" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceModel.Security" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.VehiclesModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Drawing.Design" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Xml.XPath" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Diagnostics.TraceSource" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UIModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.Graphs" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UmbraModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.AnimationModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Security" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Linq.Parallel" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reflection.Emit.Lightweight" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Extensions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="MessagePipe" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Numerics" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.Physics2DModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.Compression.FileSystem" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.PackageManagerUIModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.UIElementsSamplesModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Data.DataSetExtensions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Diagnostics.StackTrace" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Text.Encoding" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.ScreenCaptureModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.WebSockets.Client" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.Windows.Threading" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.Experimental" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Mvc" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.DurableInstancing" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Numerics.Vectors" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reflection.Primitives" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.UnityAnalyticsModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ComponentModel" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.UIBuilderModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceModel" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Zenject" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Http" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.NameResolution" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.ClothModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.Runtime.Remoting" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.DirectoryServices" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.AudioModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.TerrainModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.WebHeaderCollection" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Numerics" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Management" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Zenject-usage" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.Primitives" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.QuickSearchModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.DeviceSimulatorModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Xml.XDocument" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.SceneTemplateModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UniTask.DOTween" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reactive.Windows.Forms" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.VirtualTexturingModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.GraphViewModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Collections.Specialized" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Extensions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.UIServiceModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.UnityConnectModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Workflow.Activities" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Linq.Expressions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Globalization.Calendars" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Xml" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.DiagnosticsModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceModel.Primitives" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ComponentModel.EventBasedAsync" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Runtime.Serialization" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Microsoft.Win32.Primitives" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reflection.Extensions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.TextCoreFontEngineModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.WindowsStandalone.Extensions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="Unity.TextMeshPro" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Dynamic" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Web.Http.SelfHost" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Windows" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Core" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.IO.MemoryMappedFiles" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Net.WebSockets" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Resources.Reader" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Reflection" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.InputLegacyModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Transactions" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.Data" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="System.ServiceModel.Discovery" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.PerformanceReportingModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEngine.LocalizationModule" />
+    <option featureType="com.jetbrains.rider.solution.reference" implementationName="UnityEditor.UI" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -115,5 +426,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

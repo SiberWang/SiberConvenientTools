@@ -13,4 +13,14 @@ MonoBehaviour:
   m_Name: CardDataOverview
   m_EditorClassIdentifier: 
   CardDatas:
+  - {fileID: 11400000, guid: 3e36293e2f2a0614bb49682e5a9dbfe6, type: 2}
+  - {fileID: 11400000, guid: 38dbe61abc91ae04c8bbed479751c1df, type: 2}
+  - {fileID: 11400000, guid: 5737ed52fa3133148b386708ea3ead27, type: 2}
+  - {fileID: 11400000, guid: 9b624b583aa4b3d4e8efddc08902db76, type: 2}
+  - {fileID: 11400000, guid: c7768a4613d53334aaf049bad575d0c6, type: 2}
+  - {fileID: 11400000, guid: 5d7ec75082f748748a5f526ccbd239c6, type: 2}
   - {fileID: 11400000, guid: 1184293180acb4141bec7c1833f553c8, type: 2}
+  - {fileID: 11400000, guid: 69d004cb245f10c40a60d8bcac200f4b, type: 2}
+  - {fileID: 11400000, guid: 36bf0986a963d9845a4568433eb84c19, type: 2}
+  - {fileID: 11400000, guid: 0a367230165e197409b3b7d3967ee375, type: 2}
+  - {fileID: 11400000, guid: b429a3d7874322447a6a8c67f64d52c6, type: 2}
