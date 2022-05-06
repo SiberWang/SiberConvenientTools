@@ -49,7 +49,7 @@ namespace CustomTool.UIScrollRect
 
         protected bool m_IsInited;
         protected bool m_IsInitedPool;
-        protected bool m_IsClearList;
+        protected bool m_IsClearList; //目前沒啥用途
         protected int  m_MaxCount = -1;
         protected int  m_MinIndex = -1;
         protected int  m_MaxIndex = -1;
@@ -67,6 +67,22 @@ namespace CustomTool.UIScrollRect
 
     #region Public Methods - Init
 
+        public void Clear()
+        {
+            Debug.Log($"Clear ScrollRectPanel");
+            m_IsInited = false;
+            m_MaxCount = -1;
+            m_MinIndex = -1;
+            m_MaxIndex = -1;
+            Debug.Log($"m_ScrollRectPool : {m_ScrollRectPool != null}");
+            // A 刪掉是一個方法
+            m_IsInitedPool   = false;
+            m_ScrollRectPool = null;
+
+            // B 再利用原來存在的資源也是一個方法
+            // m_IsInitedPool = true;
+        }
+
         public virtual void Init(GameObject cellPrefab, ScrollRect scrollRect, Action<GameObject, int> callBackAction)
         {
             //以下只執行1次
@@ -76,22 +92,25 @@ namespace CustomTool.UIScrollRect
             m_ScrollRect   = scrollRect;
             m_Content      = m_ScrollRect.content;
 
-            if (m_Content.childCount > 0)
-                foreach (Transform child in m_Content)
-                    Destroy(child.gameObject);
-
             if (m_TargetPrefab == null)
             {
                 Debug.LogError("m_TargetPrefab is null");
                 return;
             }
 
-            m_TargetPrefab.name = $"{m_TargetPrefab.name} (CellSample)";
-            m_TargetPrefab.SetActive(false);
-            m_TargetPrefab = Instantiate(m_TargetPrefab, transform.parent, true);
+            if (!m_IsInitedPool)
+            {
+                m_TargetPrefab.name = $"{m_TargetPrefab.name} (CellSample)";
+                m_TargetPrefab.SetActive(false);
+                m_TargetPrefab = Instantiate(m_TargetPrefab, transform.parent, true);
 
-            // m_Content        = GetComponent<ScrollRect>().content;
-            m_ScrollRectPool = new ScrollRectPool(m_TargetPrefab, m_Content);
+                if (m_Content.childCount > 0)
+                    foreach (Transform child in m_Content)
+                        Destroy(child.gameObject);
+
+                m_ScrollRectPool = new ScrollRectPool(m_TargetPrefab, m_Content);
+                m_IsInitedPool   = true;
+            }
 
             // 以下是讀取 GridLayoutGroup 的內容
             hasContentSizeFitter = m_Content.TryGetComponent<ContentSizeFitter>(out var contentSizeFitter);
@@ -161,8 +180,7 @@ namespace CustomTool.UIScrollRect
             SetContentRectDirection(spawnNum);         // 設定 Content 尺寸
             var lastEndIndex = GetLastIndex(spawnNum); // 計算並開始索引Index
             RoundCard(spawnNum, lastEndIndex);
-            m_MaxCount     = spawnNum;
-            m_IsInitedPool = true;
+            m_MaxCount = spawnNum;
         }
 
         // 1- 計算每一個位置並儲存
@@ -324,7 +342,7 @@ namespace CustomTool.UIScrollRect
                 }
             }
         }
-        
+
         public void SetCellBack(Action<GameObject, int> cellBack)
         {
             m_CallBackAction = cellBack;

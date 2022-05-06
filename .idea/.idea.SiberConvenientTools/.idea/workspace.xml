@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CellSample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CellSample.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectExampleHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectExampleHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectPanel.cs" afterDir="false" />
     </list>
@@ -39,7 +40,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -87,6 +88,8 @@
       <workItem from="1651714704414" duration="704000" />
       <workItem from="1651715533623" duration="2968000" />
       <workItem from="1651747667946" duration="3477000" />
+      <workItem from="1651799520959" duration="98000" />
+      <workItem from="1651799699500" duration="3629000" />
     </task>
     <servers />
   </component>

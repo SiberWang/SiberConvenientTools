@@ -17,8 +17,7 @@ namespace CustomTool.UIScrollRect
 
             public CardType cardType;
             public string   id;
-
-            public string name;
+            public string   name;
 
         #endregion
         }
@@ -44,7 +43,6 @@ namespace CustomTool.UIScrollRect
 
         private List<TempData> tempDataList;
         private List<TempData> currentDataList;
-        private bool           isCreated;
 
     #endregion
 
@@ -56,7 +54,7 @@ namespace CustomTool.UIScrollRect
             {
                 Debug.Log("Start ScrollRectExampleHandler");
                 //Store Data
-                StoreDataToList();
+                StoreDataToList(); // 沒問題
                 //Create ScrollRectPanel
                 CreateScrollRectPanel();
             }
@@ -64,7 +62,7 @@ namespace CustomTool.UIScrollRect
 
         private void OnDisable()
         {
-            // tempDatas.Clear();
+            scrollRectPanel.Clear();
         }
 
     #endregion
@@ -77,6 +75,9 @@ namespace CustomTool.UIScrollRect
             if (cardDataOverview == null) Debug.LogError("CardDataOverview is null");
             Debug.Log($"----- Load Datas -----");
             var cardDatas = cardDataOverview.FindDatas();
+
+            if (tempDatas.Count > 0) tempDatas.Clear();
+
             foreach (var cardData in cardDatas)
             {
                 if (cardData == null) continue;
@@ -92,10 +93,11 @@ namespace CustomTool.UIScrollRect
             tempDataList = OrderByUnits(new List<TempData>(tempDatas.Values));
             if (tempDataList != null) cellCount = tempDataList.Count;
             currentDataList = tempDataList;
-            foreach (var data in tempDataList)
-            {
-                Debug.Log($"data : {data.name} {data.id}");
-            }
+            
+            // foreach (var data in tempDataList)
+            // {
+            //     Debug.Log($"data : {data.name} {data.id}");
+            // }
         }
 
         /// <summary>
@@ -113,6 +115,14 @@ namespace CustomTool.UIScrollRect
             }
 
             var cellSample = obj.GetComponent<CellSample>();
+            for (int i = 0; i < tempDatas.Count; i++)
+            {
+                if (i != index) continue;
+                cellSample.NameText.text = "";
+                cellSample.IDText.text   = "";
+                cellSample.SetCardType(null);
+            }
+
             for (int i = 0; i < currentDataList.Count; i++)
             {
                 if (i != index) continue;
@@ -124,12 +134,7 @@ namespace CustomTool.UIScrollRect
 
         private void CreateScrollRectPanel()
         {
-            if (!isCreated)
-            {
-                scrollRectPanel.Init(cellPrefab, scrollRect, LoadInfoCallBack);
-                isCreated = true;
-            }
-
+            scrollRectPanel.Init(cellPrefab, scrollRect, LoadInfoCallBack);
             scrollRectPanel.ShowList(cellCount);
         }
 
@@ -162,9 +167,17 @@ namespace CustomTool.UIScrollRect
                 selectDataList = tempDataList.Where(card => card.cardType == CardType.Heal).ToList();
             if (cardType == CardType.Spawn.ToString())
                 selectDataList = tempDataList.Where(card => card.cardType == CardType.Spawn).ToList();
+            if (cardType == "All")
+                selectDataList = tempDataList.ToList();
+
 
             currentDataList = selectDataList;
             scrollRectPanel.ShowList(currentDataList.Count);
+            
+            // foreach (var data in currentDataList)
+            // {
+            //     Debug.Log($"data : {data.name} {data.id} , OnSelectCardType");
+            // }
         }
 
     #endregion

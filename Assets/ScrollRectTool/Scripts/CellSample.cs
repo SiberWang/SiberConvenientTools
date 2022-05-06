@@ -29,4 +29,9 @@ public class CellSample : MonoBehaviour
         DescriptionText.color = textColor;
         DescriptionText.text  = cardType.ToString();
     }
+    
+    public void SetCardType(string cardType)
+    {
+        DescriptionText.text  = cardType;
+    }
 }
