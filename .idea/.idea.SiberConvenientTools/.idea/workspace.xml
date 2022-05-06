@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CellSample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CellSample.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Prefabs/CellSample.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Prefabs/CellSample.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scenes/Prototype_ScrollRect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scenes/Prototype_ScrollRect.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectExampleHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectExampleHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +91,7 @@
       <workItem from="1651715533623" duration="2968000" />
       <workItem from="1651747667946" duration="3477000" />
       <workItem from="1651799520959" duration="98000" />
-      <workItem from="1651799699500" duration="3629000" />
+      <workItem from="1651799699500" duration="8837000" />
     </task>
     <servers />
   </component>

@@ -47,7 +47,7 @@ namespace CustomTool.UIScrollRect
         protected float m_CellObjectWidth;
         protected float m_CellObjectHeight;
 
-        protected bool m_IsInited;
+        protected bool m_IsInitedSetting;
         protected bool m_IsInitedPool;
         protected bool m_IsClearList; //目前沒啥用途
         protected int  m_MaxCount = -1;
@@ -70,7 +70,7 @@ namespace CustomTool.UIScrollRect
         public void Clear()
         {
             Debug.Log($"Clear ScrollRectPanel");
-            m_IsInited = false;
+            m_IsInitedSetting = false;
             m_MaxCount = -1;
             m_MinIndex = -1;
             m_MaxIndex = -1;
@@ -86,28 +86,26 @@ namespace CustomTool.UIScrollRect
         public virtual void Init(GameObject cellPrefab, ScrollRect scrollRect, Action<GameObject, int> callBackAction)
         {
             //以下只執行1次
-            if (m_IsInited) return;
-
-            m_TargetPrefab = cellPrefab;
-            m_ScrollRect   = scrollRect;
-            m_Content      = m_ScrollRect.content;
-
-            if (m_TargetPrefab == null)
+            if (m_IsInitedSetting) return;
+            if (cellPrefab == null)
             {
                 Debug.LogError("m_TargetPrefab is null");
                 return;
             }
 
+            m_TargetPrefab = cellPrefab;
+            m_ScrollRect   = scrollRect;
+            m_Content      = m_ScrollRect.content;
+
             if (!m_IsInitedPool)
             {
-                m_TargetPrefab.name = $"{m_TargetPrefab.name} (CellSample)";
-                m_TargetPrefab.SetActive(false);
-                m_TargetPrefab = Instantiate(m_TargetPrefab, transform.parent, true);
-
                 if (m_Content.childCount > 0)
                     foreach (Transform child in m_Content)
                         Destroy(child.gameObject);
 
+                m_TargetPrefab.name = $"{m_TargetPrefab.name} (CellSample)";
+                m_TargetPrefab.SetActive(false);
+                m_TargetPrefab   = Instantiate(m_TargetPrefab, m_Content.parent, true);
                 m_ScrollRectPool = new ScrollRectPool(m_TargetPrefab, m_Content);
                 m_IsInitedPool   = true;
             }
@@ -388,7 +386,7 @@ namespace CustomTool.UIScrollRect
             m_ScrollRectPool.PushToPool(m_TargetPrefab);
             StoreCardRect();                  //儲存Rect的相關資訊，並設定
             BindScrollRect(ScrollRectAction); //在 ScrollRect 增加滑動事件
-            m_IsInited = true;
+            m_IsInitedSetting = true;
         }
 
         /// <summary> ScrollRect - RemoveAllListeners，並綁定指定事件 </summary>

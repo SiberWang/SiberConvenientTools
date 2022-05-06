@@ -115,14 +115,6 @@ namespace CustomTool.UIScrollRect
             }
 
             var cellSample = obj.GetComponent<CellSample>();
-            for (int i = 0; i < tempDatas.Count; i++)
-            {
-                if (i != index) continue;
-                cellSample.NameText.text = "";
-                cellSample.IDText.text   = "";
-                cellSample.SetCardType(null);
-            }
-
             for (int i = 0; i < currentDataList.Count; i++)
             {
                 if (i != index) continue;
