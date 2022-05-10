@@ -120,8 +120,10 @@ namespace CustomTool.UIScrollRect
                 // 抓 GridLayoutGroup 的設定
                 var gridCellSize = gridLayoutGroup.cellSize;
                 var gridSpacing  = gridLayoutGroup.spacing;
+                var constraintCount = gridLayoutGroup.constraintCount;
                 tempPadding = gridLayoutGroup.padding;
                 m_Spacing   = gridSpacing.x;
+                m_Row       = constraintCount;
 
                 // 設定Cell Target 的資料
                 var cellRectTrans = m_TargetPrefab.GetComponent<RectTransform>();
