@@ -53,6 +53,7 @@ namespace CustomTool.UIScrollRect
             if (Application.isPlaying)
             {
                 Debug.Log("Start ScrollRectExampleHandler");
+                scrollRectPanel.StoreScrollRectSetting(scrollRect);
                 //Store Data
                 StoreDataToList(); // 沒問題
                 //Create ScrollRectPanel
@@ -126,7 +127,7 @@ namespace CustomTool.UIScrollRect
 
         private void CreateScrollRectPanel()
         {
-            scrollRectPanel.Init(cellPrefab, scrollRect, LoadInfoCallBack);
+            scrollRectPanel.Init(cellPrefab, LoadInfoCallBack);
             scrollRectPanel.ShowList(cellCount);
         }
 

@@ -62,6 +62,10 @@ namespace CustomTool.UIScrollRect
 
         private ScrollRectPool m_ScrollRectPool;
         private GameObject     m_TargetPrefab;
+        
+        private Vector2 m_CellSize;
+        private bool    isStoreContentInfo;
+        private int     constraintCount;
 
     #endregion
 
@@ -83,7 +87,56 @@ namespace CustomTool.UIScrollRect
             // m_IsInitedPool = true;
         }
 
-        public virtual void Init(GameObject cellPrefab, ScrollRect scrollRect, Action<GameObject, int> callBackAction)
+        /// <summary> 紀錄ScrollRect相關資訊，包含其中的 content </summary>
+        /// <param name="scrollRect"> 指定的scrollRect </param>
+        public void StoreScrollRectSetting(ScrollRect scrollRect)
+        {
+            if (isStoreContentInfo) return;
+            m_ScrollRect = scrollRect;
+            m_Content    = scrollRect.content;
+            // 避免一開始就被看到，先隱藏
+            m_Content.gameObject.SetActive(false);
+
+            // 以下是讀取 GridLayoutGroup 的內容
+            hasContentSizeFitter = m_Content.TryGetComponent<ContentSizeFitter>(out var contentSizeFitter);
+            if (hasContentSizeFitter) contentSizeFitter.enabled = false;
+
+            hasGridLayoutGroup = m_Content.TryGetComponent<GridLayoutGroup>(out var gridLayoutGroup);
+            if (hasGridLayoutGroup)
+            {
+                constraintCount = gridLayoutGroup.constraintCount;
+                // 抓 GridLayoutGroup 的設定
+                var gridCellSize = gridLayoutGroup.cellSize;
+                var gridSpacing  = gridLayoutGroup.spacing;
+
+                // 判斷排列方式是否為 Flexible (這邊這樣做的原因是，讓 GridLayoutGroup 去自動排列時去紀錄現在顯示的排列數量)
+                if (gridLayoutGroup.constraint == GridLayoutGroup.Constraint.Flexible)
+                {
+                    gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+                    gridLayoutGroup.constraint = GridLayoutGroup.Constraint.Flexible;
+                    var size = GetGridSize(gridLayoutGroup);
+                    constraintCount = size.x;
+                }
+
+                tempPadding = gridLayoutGroup.padding;
+                m_CellSize  = gridCellSize;
+                m_Spacing   = gridSpacing.x;
+                m_Row       = Math.Max(3, constraintCount);
+
+                // 關閉 GridLayoutGroup & Content Size Fitter
+                gridLayoutGroup.enabled = false;
+
+                // 刪除底下子物件
+                if (m_Content.childCount > 0)
+                    foreach (Transform child in m_Content)
+                        Destroy(child.gameObject);
+            }
+
+            m_Content.gameObject.SetActive(true);
+            isStoreContentInfo = true;
+        }
+        
+        public virtual void Init(GameObject cellPrefab, Action<GameObject, int> callBackAction)
         {
             //以下只執行1次
             if (m_IsInitedSetting) return;
@@ -94,8 +147,6 @@ namespace CustomTool.UIScrollRect
             }
 
             m_TargetPrefab = cellPrefab;
-            m_ScrollRect   = scrollRect;
-            m_Content      = m_ScrollRect.content;
 
             if (!m_IsInitedPool)
             {
@@ -103,38 +154,18 @@ namespace CustomTool.UIScrollRect
                     foreach (Transform child in m_Content)
                         Destroy(child.gameObject);
 
-                m_TargetPrefab.name = $"{m_TargetPrefab.name} (CellSample)";
+                // 設定Cell Target 的資料
+                var cellRectTrans = m_TargetPrefab.GetComponent<RectTransform>();
+                cellRectTrans.anchorMin     = new Vector2(0, 1);
+                cellRectTrans.anchorMax     = new Vector2(0, 1);
+                cellRectTrans.sizeDelta     = m_CellSize;
+                cellRectTrans.localPosition = new Vector3(default, default, 0f);
+                
+                m_TargetPrefab.name         = $"{m_TargetPrefab.name} (CellSample)";
                 m_TargetPrefab.SetActive(false);
                 m_TargetPrefab   = Instantiate(m_TargetPrefab, m_Content.parent, true);
                 m_ScrollRectPool = new ScrollRectPool(m_TargetPrefab, m_Content);
                 m_IsInitedPool   = true;
-            }
-
-            // 以下是讀取 GridLayoutGroup 的內容
-            hasContentSizeFitter = m_Content.TryGetComponent<ContentSizeFitter>(out var contentSizeFitter);
-            if (hasContentSizeFitter) contentSizeFitter.enabled = false;
-
-            hasGridLayoutGroup = m_Content.TryGetComponent<GridLayoutGroup>(out var gridLayoutGroup);
-            if (hasGridLayoutGroup)
-            {
-                // 抓 GridLayoutGroup 的設定
-                var gridCellSize = gridLayoutGroup.cellSize;
-                var gridSpacing  = gridLayoutGroup.spacing;
-                var constraintCount = gridLayoutGroup.constraintCount;
-                tempPadding = gridLayoutGroup.padding;
-                m_Spacing   = gridSpacing.x;
-                m_Row       = constraintCount;
-
-                // 設定Cell Target 的資料
-                var cellRectTrans = m_TargetPrefab.GetComponent<RectTransform>();
-                // CheckAnchors(cellRectTrans);
-
-                cellRectTrans.anchorMin = new Vector2(0, 1);
-                cellRectTrans.anchorMax = new Vector2(0, 1);
-                cellRectTrans.sizeDelta = gridCellSize;
-                // 關閉 GridLayoutGroup & Content Size Fitter
-                gridLayoutGroup.enabled     = false;
-                cellRectTrans.localPosition = new Vector3(default, default, 0f);
             }
 
             DoInit(callBackAction);
@@ -551,6 +582,61 @@ namespace CustomTool.UIScrollRect
             m_ScrollRectPool.PushToPool(info.obj);
             info.obj = null;
             return info;
+        }
+
+    #endregion
+        
+    #region Grid Size Count
+
+        // 利用 GridLayoutGroup 的 CellSize 去計算幾排幾列
+        public Vector2Int GetGridSize(GridLayoutGroup grid)
+        {
+            int        itemsCount = grid.transform.childCount;
+            Vector2Int size       = Vector2Int.zero;
+
+            if (itemsCount == 0) return size;
+
+            switch (grid.constraint)
+            {
+                case GridLayoutGroup.Constraint.FixedColumnCount:
+                    size.x = grid.constraintCount;
+                    size.y = getAnotherAxisCount(itemsCount, size.x);
+                    break;
+
+                case GridLayoutGroup.Constraint.FixedRowCount:
+                    size.y = grid.constraintCount;
+                    size.x = getAnotherAxisCount(itemsCount, size.y);
+                    break;
+
+                case GridLayoutGroup.Constraint.Flexible:
+                    size = flexibleSize(grid);
+                    break;
+            }
+
+            return size;
+        }
+
+        private Vector2Int flexibleSize(GridLayoutGroup grid)
+        {
+            int   itemsCount = grid.transform.childCount;
+            float prevX      = float.NegativeInfinity;
+            int   xCount     = 0;
+
+            for (int i = 0; i < itemsCount; i++)
+            {
+                Vector2 pos = ((RectTransform)grid.transform.GetChild(i)).anchoredPosition;
+                if (pos.x <= prevX) break;
+                prevX = pos.x;
+                xCount++;
+            }
+
+            int yCount = getAnotherAxisCount(itemsCount, xCount);
+            return new Vector2Int(xCount, yCount);
+        }
+
+        private int getAnotherAxisCount(int totalCount, int axisCount)
+        {
+            return totalCount / axisCount + Mathf.Min(1, totalCount % axisCount);
         }
 
     #endregion
