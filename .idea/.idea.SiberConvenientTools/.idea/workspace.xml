@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/MathfCount.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/KeepClick.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/KeepClick.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/KeepClick.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/KeepClickButton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/KeepClickButton.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/NumberCounter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/NumberCounter.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +21,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/KeepClick/KeepClickButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KeepClick/NumberCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/CellSample.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -91,7 +98,7 @@
       <workItem from="1651799520959" duration="98000" />
       <workItem from="1651799699500" duration="8837000" />
       <workItem from="1653553095010" duration="641000" />
-      <workItem from="1654485075949" duration="1157000" />
+      <workItem from="1654485075949" duration="6582000" />
     </task>
     <servers />
   </component>
