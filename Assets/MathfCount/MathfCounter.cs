@@ -18,6 +18,19 @@ public class MathfCounter : MonoBehaviour
         {
             Count();
         }
+        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log($"0 % 2 == {0 % 2}");
+            Debug.Log($"1 % 2 == {1 % 2}");
+            Debug.Log($"2 % 2 == {2 % 2}");
+            Debug.Log($"3 % 2 == {3 % 2}");
+            
+            Debug.Log($"0 % 3 == {0 % 3}");
+            Debug.Log($"1 % 3 == {1 % 3}");
+            Debug.Log($"2 % 3 == {2 % 3}");
+            Debug.Log($"3 % 3 == {3 % 3}");
+        }
     }
 
     private void Count()

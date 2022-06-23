@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CustomTool.UIScrollRect
 {
     /// <summary>
-    /// Stack ObjectPool - For ScrollRect
+    /// Stack ObjectPool - For UI ScrollRect
     /// 方便用於UI ScrollRect 依照指定順序呼叫及回收
     /// </summary>
     public class ScrollRectPool
@@ -12,17 +12,20 @@ namespace CustomTool.UIScrollRect
         #region Private Variables
 
         private readonly Stack<GameObject> stackPool = new Stack<GameObject>();
-        private readonly GameObject spawnTarget;
-        private readonly Transform contentTran;
-
-        #endregion
+        private readonly GameObject        spawnTarget;
+        private readonly Transform         contentTran;
+        private readonly bool              isSpawnActive;
+        
+    #endregion
 
         #region Constructor
-
-        public ScrollRectPool(GameObject spawnTarget, Transform contentTran)
+        
+        public ScrollRectPool(GameObject spawnTarget, Transform contentTran, bool isSpawnActive = true)
         {
-            this.spawnTarget = spawnTarget;
-            this.contentTran = contentTran;
+            this.spawnTarget   = spawnTarget;
+            this.contentTran   = contentTran;
+            this.isSpawnActive = isSpawnActive;
+            
         }
 
         #endregion
@@ -34,8 +37,9 @@ namespace CustomTool.UIScrollRect
         {
             GameObject obj = TakeObject();
             obj.transform.SetParent(contentTran.transform);
-            obj.transform.localScale = Vector3.one;
-            obj.SetActive(true);
+            obj.transform.localPosition = new Vector3(default, default, 0f);
+            obj.transform.localScale    = Vector3.one;
+            obj.SetActive(isSpawnActive);
             return obj;
         }
 
@@ -62,7 +66,7 @@ namespace CustomTool.UIScrollRect
         }
 
         #endregion
-
+        
         #region Private Methods
 
         private GameObject TakeObject()
@@ -71,7 +75,7 @@ namespace CustomTool.UIScrollRect
             if (stackPool.Count > 0) // 如果池中有，直接叫出
                 obj = stackPool.Pop();
             if (obj == null) // 如果池中沒有物件或找不到，就生產及覆蓋
-                obj = UnityEngine.GameObject.Instantiate(spawnTarget);
+                obj = GameObject.Instantiate(spawnTarget);
             return obj;
         }
 

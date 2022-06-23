@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/KeepClick.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/KeepClick.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/KeepClick.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/KeepClickButton.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/KeepClickButton.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/NumberCounter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/KeepClick/NumberCounter.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MathfCount/MathfCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MathfCount/MathfCounter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scenes/Prototype_ScrollRect.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scenes/Prototype_ScrollRect.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollRectTool/Scripts/ScrollRectPool.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,6 +96,7 @@
       <workItem from="1651799699500" duration="8837000" />
       <workItem from="1653553095010" duration="641000" />
       <workItem from="1654485075949" duration="6582000" />
+      <workItem from="1655946898852" duration="3730000" />
     </task>
     <servers />
   </component>
