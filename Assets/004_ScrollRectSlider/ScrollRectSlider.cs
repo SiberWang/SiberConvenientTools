@@ -41,7 +41,7 @@ public class ScrollRectSlider : MonoBehaviour, IPopPage, IBeginDragHandler, IEnd
 
         for (int i = 0; i < pageCount; i++)
         {
-            float number = (float)i / (float)num;
+            float number = (float)i / (float)num; // 必須得float，不然int / int 無法計算小數
             pageArrayList.Add(number);
         }
 
