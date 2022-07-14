@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.akbiggs.unitytimer": "https://github.com/akbiggs/UnityTimer.git",
     "com.rstar.rstarutility": "https://github.com/L1247/rStarUtility.git?path=Assets/rStarUtility",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ide.rider": "3.0.14",
