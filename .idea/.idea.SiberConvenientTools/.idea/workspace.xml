@@ -2,18 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/000_Tools.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Singleton.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Singleton.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/SingletonMono.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/SingletonMono.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/SingletonSO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/SingletonSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/CatchYouBug.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/CatchYouBug.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Scenes.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Scenes/Example_Singleton.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Scenes/Example_Singleton.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Scripts/GameInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Scripts/GameInfo.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Scripts/GameMgr.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Scripts/GameMgr.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Scripts/UIExampleHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/Scripts/UIExampleHandler.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Tools.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/000_Tools/Tools.asmdef.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/004_ScrollRectSlider/ScrollRectSlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/004_ScrollRectSlider/ScrollRectSlider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/000_Tools/Singleton/SingletonMono.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/000_Tools/Singleton/SingletonMono.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +30,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/000_Tools/Singleton/Scripts/GameMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/004_ScrollRectSlider/ScrollRectSlider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.cysharp.messagepipe@1.7.2/Runtime/AsyncMessageBroker_Key.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.neuecc.unirx@7.1.0/Scripts/UnityEngineBridge/ReactiveCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.rstar.rstarutility@c83f1a3085/Util/Extensions/UniRxExtension/UniRxExtension.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/823fb226a3f9439cb41fdcb61f9c86a1157600/a4/9e58ff53/Application.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8a522b806eac9bb894e6e4c5fe87f353457535e769447e79c6b396beecb5d0/System.Threading.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -104,7 +117,7 @@
       <workItem from="1655966137147" duration="622000" />
       <workItem from="1656055514864" duration="3311000" />
       <workItem from="1656059155594" duration="3987000" />
-      <workItem from="1657762324740" duration="1141000" />
+      <workItem from="1657762324740" duration="13873000" />
     </task>
     <servers />
   </component>
