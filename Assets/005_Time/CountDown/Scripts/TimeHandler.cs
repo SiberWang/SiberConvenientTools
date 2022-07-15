@@ -43,6 +43,7 @@ public class TimeHandler : MonoBehaviour
     [SerializeField] private Button startAllButton;
     [SerializeField] private Button stopAllButton;
     [SerializeField] private Button resetAllButton;
+    [SerializeField] private Slider timeScaleSlider;
 
     private List<Button>       buttonList;
     private ClockTimer         clockTimer;
@@ -66,6 +67,11 @@ public class TimeHandler : MonoBehaviour
         InitUI();
         CreateTimers();
         BindButtons();
+    }
+
+    private void Update()
+    {
+        Time.timeScale = timeScaleSlider.value;
     }
 
 #endregion
