@@ -2,25 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/CountDown.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/CountDown.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ClockTimer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ClockTimer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownTimer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownTimer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ITime.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ITime.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/TimeHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/TimeHandler.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/TimeCore.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/TimeCore.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownDateTimer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownDateTimer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TestTimerBehaviour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TestTimerBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TimerExampleScene.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TimerExampleScene.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TimerExampleSceneSettings.lighting" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TimerExampleSceneSettings.lighting.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/Timer.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/Timer.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/Timer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/Timer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/TimerExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/TimerExtensions.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/CountDown.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/CountDown.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ClockTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ClockTimer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownTimer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ITime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ITime.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/TimeHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/TimeHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,8 +131,17 @@
       <workItem from="1655966137147" duration="622000" />
       <workItem from="1656055514864" duration="3311000" />
       <workItem from="1656059155594" duration="3987000" />
-      <workItem from="1657762324740" duration="23079000" />
+      <workItem from="1657762324740" duration="25469000" />
+      <workItem from="1657847278243" duration="6859000" />
     </task>
+    <task id="LOCAL-00001" summary="Add feature - TimeHandler and ClockTimer.">
+      <created>1657790565785</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1657790565785</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,6 +477,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Add feature - TimeHandler and ClockTimer." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add feature - TimeHandler and ClockTimer." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

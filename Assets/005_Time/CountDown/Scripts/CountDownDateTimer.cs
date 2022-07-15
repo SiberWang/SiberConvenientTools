@@ -2,21 +2,22 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-public class ClockTimer : ITime
+public class CountDownDateTimer : ITime
 {
-    private bool     isStartTick;
-    private bool     isTickTime;
-    private DateTime dateTime;
+    private bool isStartTick;
+    private bool isTickTime;
 
     private Action<TimeSpan>        tickAction;
     private CancellationTokenSource cancelToken;
+
+    private DateTime beginTime;
+    private DateTime endTime;
 
 #region ========== Public Methods ==========
 
     public void Init(Action<TimeSpan> tickAction)
     {
         this.tickAction = tickAction;
-        dateTime        = DateTime.Today;
     }
 
     public void Play()
@@ -33,6 +34,12 @@ public class ClockTimer : ITime
             cancelToken.Dispose();
             cancelToken = null;
         }
+    }
+
+    public void SetCountDown(DateTime endDay, DateTime beginDay)
+    {
+        endTime   = endDay;
+        beginTime = beginDay;
     }
 
 #endregion
@@ -60,7 +67,7 @@ public class ClockTimer : ITime
 
     private TimeSpan UpdateTime()
     {
-        var time = DateTime.Now - dateTime;
+        var time = endTime - beginTime;
         return time;
     }
 
