@@ -1,28 +1,56 @@
 ﻿using System;
-using System.Threading;
-using Timer = UnityTimer.Timer;
+using UnityTimer;
 
 public class CountDownTimer : ITime
 {
-    private bool isStartTick;
-    private bool isTickTime;
+#region ========== Protected Variables ==========
 
-    private Action                  completeAction;
-    private Action<TimeSpan>        tickAction;
-    private CancellationTokenSource cancelToken;
+    protected float duration;
 
-    private DateTime beginTime;
-    private DateTime endTime;
+#endregion
+
+#region ========== Private Variables ==========
+
+    private Action           onStart;
+    private Action           onStop;
+    private Action           onComplete;
+    private Action<TimeSpan> onTick;
 
     private Timer timer;
-    private float duration;
+
+#endregion
+
+#region ========== Constructor ==========
+
+    public CountDownTimer(Action onStart, Action onStop, Action<TimeSpan> onTick, Action onComplete)
+    {
+        this.onStop     = onStop;
+        this.onStart    = onStart;
+        this.onTick     = onTick;
+        this.onComplete = onComplete;
+    }
+
+#endregion
 
 #region ========== Public Methods ==========
 
-    public void Init(Action<TimeSpan> tickAction, Action completeAction)
+    public void Start()
     {
-        this.tickAction     = tickAction;
-        this.completeAction = completeAction;
+        Stop();
+        onStart?.Invoke();
+        timer = Timer.Register
+            (
+             duration: duration,
+             onComplete: onComplete,
+             onUpdate: sec =>
+             {
+                 var      remaining = timer.GetTimeRemaining(); // 倒數
+                 TimeSpan timeSpan  = TimeSpan.FromSeconds(remaining);
+                 onTick?.Invoke(timeSpan);
+             },
+             isLooped: false,
+             useRealTime: false
+            );
     }
 
     public void SetDuration(float duration)
@@ -30,27 +58,16 @@ public class CountDownTimer : ITime
         this.duration = duration;
     }
 
-    public void Play()
+    public void SetDuration(string durationValue)
     {
-        Stop();
-        timer = Timer.Register
-            (
-             duration: duration,
-             onComplete: completeAction,
-             onUpdate: sec =>
-             {
-                 var      remaining = timer.GetTimeRemaining(); // 倒數
-                 TimeSpan timeSpan  = TimeSpan.FromSeconds(remaining);
-                 tickAction?.Invoke(timeSpan);
-             },
-             isLooped: false,
-             useRealTime: false
-            );
+        duration = float.TryParse(durationValue, out var time) ? time : 10f;
+        if (duration > 3600000) duration = 3600000; // 1000 小時
     }
 
     public void Stop()
     {
         Timer.Cancel(timer);
+        onStop?.Invoke();
     }
 
 #endregion

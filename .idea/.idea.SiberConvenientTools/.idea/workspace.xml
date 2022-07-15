@@ -2,34 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownDateTimer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownDateTimer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TestTimerBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TestTimerBehaviour.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TimerExampleScene.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TimerExampleScene.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TimerExampleSceneSettings.lighting" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Example/TimerExampleSceneSettings.lighting.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/Timer.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/Timer.asmdef.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/Timer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/Timer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/TimerExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OtherPackages/Timer/Source/TimerExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/StopWatchTimer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/StopWatchTimer.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/CountDown.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/CountDown.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ClockTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ClockTimer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownDateTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownDateTimer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/CountDownTimer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ITime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/ITime.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/TimeHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/TimeHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,20 +46,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "rider.run.widget.enabled.cache": "false",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe" />
@@ -132,7 +114,7 @@
       <workItem from="1656055514864" duration="3311000" />
       <workItem from="1656059155594" duration="3987000" />
       <workItem from="1657762324740" duration="25469000" />
-      <workItem from="1657847278243" duration="6859000" />
+      <workItem from="1657847278243" duration="21147000" />
     </task>
     <task id="LOCAL-00001" summary="Add feature - TimeHandler and ClockTimer.">
       <created>1657790565785</created>

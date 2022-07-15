@@ -2,7 +2,7 @@ public interface ITime
 {
 #region ========== Public Methods ==========
     
-    void Play();
+    void Start();
     void Stop();
 
 #endregion

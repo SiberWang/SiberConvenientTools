@@ -15,32 +15,47 @@ public class TimeHandler : MonoBehaviour
 
     [Header("[Clock Setting]")]
     [SerializeField] private TMP_Text textClockTime;
-    [SerializeField] private Button startClockButton;
-    [SerializeField] private Button stopClockButton;
-    [Header("[CountDown Setting]")]
-    [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private TMP_Text textClockTimeDone;
+    [SerializeField] private Button   startClockButton;
+    [SerializeField] private Button   stopClockButton;
+    [Header("[CountDown(Sec) Setting]")]
+    [SerializeField] private TMP_InputField inputFieldTime;
     [SerializeField] private TMP_Text textCountDownTime;
     [SerializeField] private TMP_Text textCountDownDone;
     [SerializeField] private Button   startCountDownButton;
     [SerializeField] private Button   stopCountDownButton;
-    [SerializeField] private string   endTimeValue   = "2022-07-15";
-    [SerializeField] private string   beginTimeValue = "2022-07-14";
+    [Header("[CountDown(Date) Setting]")]
+    [SerializeField] private TMP_InputField inputFieldBeginTime;
+    [SerializeField] private TMP_InputField inputFieldEndTime;
+    [SerializeField] private TMP_Text       textCountDownDateTime;
+    [SerializeField] private TMP_Text       textCountDownDateDone;
+    [SerializeField] private Button         startCountDownDateButton;
+    [SerializeField] private Button         stopCountDownDateButton;
+
     [Header("[Stopwatch Setting]")]
     [SerializeField] private TMP_Text textStopwatchTime;
     [SerializeField] private Button startStopwatchButton;
     [SerializeField] private Button stopStopwatchButton;
+    [SerializeField] private Button pauseStopwatchButton;
+    [SerializeField] private Button resumeStopwatchButton;
 
     [Header("[All Setting Button]")]
     [SerializeField] private Button startAllButton;
     [SerializeField] private Button stopAllButton;
     [SerializeField] private Button resetAllButton;
 
-    private ClockTimer     clockTimer;
-    private CountDownTimer countDownTimer;
-    private List<ITime>    timeList = new List<ITime>();
+    private List<Button>       buttonList;
+    private ClockTimer         clockTimer;
+    private CountDownTimer     countDownTimer;
+    private CountDownDateTimer countDownDateTimer;
 
-    private DateTime endDateTime;
-    private DateTime beginDateTime;
+    private DateTime       endDateTime;
+    private DateTime       beginDateTime;
+    private StopWatchTimer stopWatchTimer;
+
+    private static string Str_Done = $"<color=green>[Done!]</color>";
+    private static string Str_Tick = $"<color=yellow>[Tick]</color>";
+    private static string Str_Stop = $"<color=red>[Stop]</color>";
 
 #endregion
 
@@ -49,99 +64,134 @@ public class TimeHandler : MonoBehaviour
     private void Start()
     {
         InitUI();
-        CreateSomeTimer();
+        CreateTimers();
         BindButtons();
     }
-
-    private void CreateSomeTimer()
-    {
-        clockTimer     = new ClockTimer();
-        countDownTimer = new CountDownTimer();
-
-        clockTimer.Init(UpdateClockTimeUI);
-        countDownTimer.Init(UpdateCountDownTimeUI, CompleteCountDownTimeUI);
-
-        // 時間換算 : string => DateTime
-        endDateTime   = TurnDateTime(endTimeValue);
-        beginDateTime = TurnDateTime(beginTimeValue);
-
-        timeList.Add(clockTimer);
-        timeList.Add(countDownTimer);
-    }
-
-    private DateTime TurnDateTime(string timeValue)
-    {
-        if (DateTime.TryParse(timeValue, out var endTime))
-            return endTime;
-
-        CatchYouBug.Debug("You need to input YYYY-MM-DD");
-        return new DateTime(99, 01, 01);
-    }
-
-    private void BindButtons()
-    {
-        startClockButton.BindClick(clockTimer.Play);
-        stopClockButton.BindClick(clockTimer.Stop);
-        startCountDownButton.BindClick(()=>
-        {
-            var duration = float.TryParse(inputField.text, out var time) ? time : 10f;
-            countDownTimer.SetDuration(duration);
-            countDownTimer.Play();
-        });
-        stopCountDownButton.BindClick(countDownTimer.Stop);
-        startAllButton.BindClick(StartAll);
-        stopAllButton.BindClick(StopAll);
-        resetAllButton.BindClick(() =>
-        {
-            StopAll();
-            InitUI();
-        });
-    }
-
-#endregion
-
-#region ========== Public Methods ==========
 
 #endregion
 
 #region ========== Private Methods ==========
 
+    private void CreateTimers()
+    {
+        clockTimer = new ClockTimer
+            (onStart: () => textClockTimeDone.text     = Str_Tick,
+             onStop: () => textClockTimeDone.text      = Str_Stop,
+             onTick: currentTime => textClockTime.text = DisplayHourTime(currentTime));
+
+        countDownTimer = new CountDownTimer
+            (onStart: () => countDownTimer.SetDuration(inputFieldTime.text),
+             onStop: () => textCountDownDone.text = Str_Stop,
+             onTick: currentTime =>
+             {
+                 textCountDownTime.text = DisplayHourTime(currentTime, true);
+                 textCountDownDone.text = Str_Tick;
+             },
+             onComplete: () => textCountDownDone.text = Str_Done);
+
+        countDownDateTimer = new CountDownDateTimer
+            (onStart: () => countDownDateTimer.SetCountDown(inputFieldBeginTime.text, inputFieldEndTime.text),
+             onStop: () => textCountDownDateDone.text = Str_Stop,
+             onTick: currentTime =>
+             {
+                 textCountDownDateTime.text = DisplayDayTime(currentTime);
+                 textCountDownDateDone.text = Str_Tick;
+             },
+             onComplete: () => textCountDownDateDone.text = Str_Done);
+
+        stopWatchTimer = new StopWatchTimer
+            (currentTime => textStopwatchTime.text = DisplayHourTime(currentTime, true));
+    }
+
+    private void BindButtons()
+    {
+        // Clock
+        startClockButton.BindClick(clockTimer.Start);
+        stopClockButton.BindClick(clockTimer.Stop);
+
+        // CountDown(Sec)
+        startCountDownButton.BindClick(countDownTimer.Start);
+        stopCountDownButton.BindClick(countDownTimer.Stop);
+
+        // CountDown(Date)
+        startCountDownDateButton.BindClick(countDownDateTimer.Start);
+        stopCountDownDateButton.BindClick(countDownDateTimer.Stop);
+
+        // Stopwatch
+        startStopwatchButton.BindClick(stopWatchTimer.Start);
+        stopStopwatchButton.BindClick(stopWatchTimer.Stop);
+        pauseStopwatchButton.BindClick(stopWatchTimer.Pause);
+        resumeStopwatchButton.BindClick(stopWatchTimer.Resume);
+
+        // All
+        startAllButton.BindClick(OnStartAll);
+        stopAllButton.BindClick(OnStopAll);
+        resetAllButton.BindClick(() =>
+        {
+            OnStopAll();
+            InitUI();
+        });
+    }
+
+    private void OnStartAll()
+    {
+        clockTimer.Start();
+        countDownTimer.Start();
+        countDownDateTimer.Start();
+        stopWatchTimer.Start();
+    }
+
+    private void OnStopAll()
+    {
+        clockTimer.Stop();
+        countDownTimer.Stop();
+        countDownDateTimer.Stop();
+        stopWatchTimer.Stop();
+    }
+
+    /// <summary> 轉為 DDD-HH-MM-SS(-FF) </summary>
+    private string DisplayDayTime(TimeSpan currentTime, bool showMilliseconds = false)
+    {
+        var days  = currentTime.Days > 0 ? currentTime.Days.ToString() : "00";
+        var hours = currentTime.Hours > 0 ? currentTime.Hours.ToString() : "00";
+        return $"{days}:{hours}:{DisplayMinutesTime(currentTime, showMilliseconds)}";
+    }
+
+    /// <summary> 轉為 HH-MM-SS(-FF) </summary>
+    private string DisplayHourTime(TimeSpan currentTime, bool showMilliseconds = false)
+    {
+        var timeHours = currentTime.Days * 24 + currentTime.Hours;
+        var hours = timeHours switch
+        {
+            > 0 and < 10 => $"0{timeHours}",
+            > 10         => $"{timeHours}",
+            _            => "00"
+        };
+
+        return $"{hours}:{DisplayMinutesTime(currentTime, showMilliseconds)}";
+    }
+
+    /// <summary> 轉為 MM-SS(-FF) </summary>
+    private string DisplayMinutesTime(TimeSpan currentTime, bool showMilliseconds = false)
+    {
+        var minutes = showMilliseconds ? $@"{currentTime:mm\:ss\:ff}" : $@"{currentTime:mm\:ss}";
+        return $"{minutes}";
+    }
+
     private void InitUI()
     {
-        textClockTime.text     = "0:00:00";
-        textCountDownTime.text = "0:00:00";
-        textCountDownDone.text = "";
-    }
+        textClockTimeDone.text     = "";
+        textCountDownDone.text     = "";
+        textCountDownDateDone.text = "";
 
-    private void StartAll()
-    {
-        foreach (var timer in timeList)
-            timer.Play();
-    }
+        textClockTime.text         = "00:00:00";
+        textCountDownTime.text     = "00:00:00:00";
+        textCountDownDateTime.text = "00:00:00:00";
+        textStopwatchTime.text     = "00:00:00:00";
 
-    private void StopAll()
-    {
-        foreach (var timer in timeList)
-            timer.Stop();
-    }
-
-    /// <summary> 更新 ClockTime UI </summary>
-    private void UpdateClockTimeUI(TimeSpan currentTime)
-    {
-        textClockTime.text = $"{currentTime.Days * 24 + currentTime.Hours}:{currentTime:mm\\:ss}";
-    }
-
-    /// <summary> 更新 CountDownTime UI - Tick </summary>
-    private void UpdateCountDownTimeUI(TimeSpan currentTime)
-    {
-        textCountDownTime.text = $"{currentTime.Days * 24 + currentTime.Hours}:{currentTime:mm\\:ss}";
-        textCountDownDone.text = "[Tick]";
-    }
-
-    /// <summary> 更新 CountDownTime UI - Complete </summary>
-    private void CompleteCountDownTimeUI()
-    {
-        textCountDownDone.text = "[Done!]";
+        inputFieldTime.text      = "30";
+        inputFieldBeginTime.text = "2022-07-15";
+        inputFieldEndTime.text   = "2022-08-15";
     }
 
 #endregion

@@ -4,28 +4,46 @@ using Cysharp.Threading.Tasks;
 
 public class ClockTimer : ITime
 {
-    private bool     isStartTick;
-    private bool     isTickTime;
-    private DateTime dateTime;
+#region ========== Private Variables ==========
 
-    private Action<TimeSpan>        tickAction;
+    private Action           onStart;
+    private Action           onStop;
+    private Action<TimeSpan> onTick;
+
+    private bool                    isStartTick;
+    private bool                    isTickTime;
     private CancellationTokenSource cancelToken;
+    private DateTime                dateTime;
+
+#endregion
+
+#region ========== Constructor ==========
+
+    public ClockTimer(Action onStart, Action onStop, Action<TimeSpan> onTick)
+    {
+        this.onStop  = onStop;
+        this.onStart = onStart;
+        this.onTick  = onTick;
+        dateTime     = DateTime.Today;
+    }
+
+#endregion
+
+#region ========== Unity Events ==========
+
+    public void Start()
+    {
+        Tick().Forget();
+        onStart?.Invoke();
+    }
+
+#endregion
 
 #region ========== Public Methods ==========
 
-    public void Init(Action<TimeSpan> tickAction)
-    {
-        this.tickAction = tickAction;
-        dateTime        = DateTime.Today;
-    }
-
-    public void Play()
-    {
-        Tick().Forget();
-    }
-
     public void Stop()
     {
+        onStop?.Invoke();
         isStartTick = false;
         if (cancelToken != null)
         {
@@ -49,12 +67,12 @@ public class ClockTimer : ITime
 
         isStartTick = true;
         cancelToken = new CancellationTokenSource();
-        tickAction?.Invoke(UpdateTime());
+        onTick?.Invoke(UpdateTime());
 
         while (isStartTick)
         {
             await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken.Token);
-            tickAction?.Invoke(UpdateTime());
+            onTick?.Invoke(UpdateTime());
         }
     }
 
