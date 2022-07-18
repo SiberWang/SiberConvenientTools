@@ -2106,6 +2106,9 @@ MonoBehaviour:
   stopAllButton: {fileID: 1165140928}
   resetAllButton: {fileID: 453794003}
   timeScaleSlider: {fileID: 1466742998}
+  oneScaleButton: {fileID: 2086169644}
+  twoScaleButton: {fileID: 884356503}
+  fiveScaleButton: {fileID: 1325623388}
   textTimeScale: {fileID: 1432513579}
 --- !u!4 &569181150
 Transform:

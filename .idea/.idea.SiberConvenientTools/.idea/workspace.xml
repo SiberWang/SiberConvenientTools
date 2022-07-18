@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/006_UnitTest.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/006_UnitTest/Tests.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/006_UnitTest/Tests/SomeUnitTests.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/006_UnitTest/Tests/SomeUnitTests.asmdef.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/006_UnitTest/Tests/SomeUnitTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/006_UnitTest/Tests/SomeUnitTests.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/CountDown.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/CountDown.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/TimeHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/TimeHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +114,7 @@
       <workItem from="1657762324740" duration="25469000" />
       <workItem from="1657847278243" duration="21926000" />
       <workItem from="1658122670801" duration="747000" />
-      <workItem from="1658129267478" duration="1063000" />
+      <workItem from="1658129267478" duration="2031000" />
     </task>
     <task id="LOCAL-00001" summary="Add feature - TimeHandler and ClockTimer.">
       <created>1657790565785</created>

@@ -44,9 +44,12 @@ public class TimeHandler : MonoBehaviour
     [SerializeField] private Button   stopAllButton;
     [SerializeField] private Button   resetAllButton;
     [SerializeField] private Slider   timeScaleSlider;
-    [SerializeField] private TMP_Text textTimeScale;
 
     [Header("[All Setting Button]")]
+    [SerializeField] private Button oneScaleButton;
+    [SerializeField] private Button   twoScaleButton;
+    [SerializeField] private Button   fiveScaleButton;
+    [SerializeField] private TMP_Text textTimeScale;
     
     private List<Button>       buttonList;
     private ClockTimer         clockTimer;
@@ -145,6 +148,12 @@ public class TimeHandler : MonoBehaviour
             OnStopAll();
             InitUI();
         });
+        
+        // TimeScale
+        
+        oneScaleButton.BindClick(() => timeScaleSlider.value = 1);
+        twoScaleButton.BindClick(() => timeScaleSlider.value = 2);
+        fiveScaleButton.BindClick(() => timeScaleSlider.value = 5);
     }
 
     private void OnStartAll()
