@@ -41,10 +41,13 @@ public class TimeHandler : MonoBehaviour
 
     [Header("[All Setting Button]")]
     [SerializeField] private Button startAllButton;
-    [SerializeField] private Button stopAllButton;
-    [SerializeField] private Button resetAllButton;
-    [SerializeField] private Slider timeScaleSlider;
+    [SerializeField] private Button   stopAllButton;
+    [SerializeField] private Button   resetAllButton;
+    [SerializeField] private Slider   timeScaleSlider;
+    [SerializeField] private TMP_Text textTimeScale;
 
+    [Header("[All Setting Button]")]
+    
     private List<Button>       buttonList;
     private ClockTimer         clockTimer;
     private CountDownTimer     countDownTimer;
@@ -67,6 +70,11 @@ public class TimeHandler : MonoBehaviour
         InitUI();
         CreateTimers();
         BindButtons();
+        timeScaleSlider.onValueChanged.AddListener(number =>
+        {
+            textTimeScale.text = $"{number:F2}";
+        });
+        textTimeScale.text = timeScaleSlider.value.ToString("F2");
     }
 
     private void Update()
