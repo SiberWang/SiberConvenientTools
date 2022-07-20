@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/TimeHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/005_Time/CountDown/Scripts/TimeHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +113,10 @@
       <workItem from="1657762324740" duration="25469000" />
       <workItem from="1657847278243" duration="21926000" />
       <workItem from="1658122670801" duration="747000" />
-      <workItem from="1658129267478" duration="2031000" />
+      <workItem from="1658129267478" duration="3035000" />
+      <workItem from="1658214140290" duration="1188000" />
+      <workItem from="1658215964925" duration="4567000" />
+      <workItem from="1658309957499" duration="230000" />
     </task>
     <task id="LOCAL-00001" summary="Add feature - TimeHandler and ClockTimer.">
       <created>1657790565785</created>
