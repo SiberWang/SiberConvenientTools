@@ -19,18 +19,22 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 
         [BoxGroup(GroupMain)]
         [SerializeField] private int clientALag;
+
         [BoxGroup(GroupMain)]
         [SerializeField] private int clientBLag;
+
         [BoxGroup(GroupMain)]
-        [SerializeField] private int serverUpdateTimes;
+        [SerializeField] private float serverUpdateTimes;
 
         [FoldoutGroup(GroupPlayer)]
         [SerializeField] private GameObject ballPrefab;
 
         [FoldoutGroup(GroupSpawn)]
         [SerializeField] private List<Transform> clientA_SpawnPoints;
+
         [FoldoutGroup(GroupSpawn)]
         [SerializeField] private List<Transform> clientB_SpawnPoints;
+
         [FoldoutGroup(GroupSpawn)]
         [SerializeField] private List<Transform> server_SpawnPoints;
 
@@ -39,7 +43,7 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
         private string       playerA_ID;
         private string       playerB_ID;
 
-        private int   tempUpdateTimes;
+        private float tempUpdateTimes;
         private Timer serverTimer;
 
     #endregion
@@ -51,13 +55,6 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
             server = new Server();
             CreateClients(); // 創立 A , B 客戶端
             CreatePlayers(); // 創立 A , B 角色
-        }
-
-        private float UpdateTimeBySec()
-        {
-            // 每秒更新 N 次
-            var updateTimes = 1 / serverUpdateTimes;
-            return updateTimes;
         }
 
         private void Update()
@@ -74,6 +71,7 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
                      useRealTime: false
                     );
                 tempUpdateTimes = serverUpdateTimes;
+                Debug.Log($"Update Timer : Update {serverUpdateTimes} times by sec");
             }
 
             // 處理 Client 的 Update
@@ -89,6 +87,13 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
     #endregion
 
     #region ========== Private Methods ==========
+
+        private float UpdateTimeBySec()
+        {
+            // 每秒更新 N 次
+            float updateTimes = 1f / serverUpdateTimes;
+            return updateTimes;
+        }
 
         private void CreateClients()
         {

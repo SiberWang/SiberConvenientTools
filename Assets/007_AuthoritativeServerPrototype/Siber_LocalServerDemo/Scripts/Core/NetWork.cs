@@ -1,40 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 {
     public class NetWork
     {
-        private List<PendingData> dataList = new List<PendingData>(); // 紀錄要執行的事件
+        private List<InputAction> actionList = new List<InputAction>(); // 紀錄要執行的事件
 
-        public void Send(int ms, InputAction inputAction)
+        public async UniTask Send(InputAction inputAction)
         {
-            var now      = inputAction.CacheTime.GetTime();
-            var doAction = new PendingData();
-            doAction.ms          = now + ms;
-            doAction.InputAction = inputAction;
-            dataList.Add(doAction);
-            Debug.Log($"NewWorkCenter send : {doAction.ms} , ms: {ms}");
+            float delayTime = inputAction.Lag;
+            await UniTask.Delay(TimeSpan.FromSeconds(delayTime));
+            actionList.Add(inputAction);
+            Debug.Log($"actionList :{actionList.Count}");
         }
 
-        public IAction Receive()
+        public async UniTask<InputAction> Receive()
         {
-            var now = DateTime.Now.Millisecond;
-            for (var i = 0; i < dataList.Count; i++)
+            Debug.Log($"actionList :{actionList.Count}");
+            for (var i = 0; i < actionList.Count; i++)
             {
-                if (dataList[i].ms > now) continue;
-                dataList.RemoveAt(i);
-                return dataList[i].InputAction;
+                float delayTime = actionList[i].CacheTime.Sec;
+                await UniTask.Delay(TimeSpan.FromSeconds(delayTime));
+                actionList.RemoveAt(i);
+                return actionList[i];
             }
 
             return null;
         }
-    }
-
-    public class PendingData
-    {
-        public int         ms;
-        public InputAction InputAction;
     }
 }

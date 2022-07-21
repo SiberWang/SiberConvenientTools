@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
@@ -49,7 +51,7 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
         {
             Debug.Log("Server Update");
             ReplyResult();
-            MediumManager.Instance.UpdateWorld("0", playerList);
+            // MediumManager.Instance.UpdateWorld("0", playerList);
         }
 
     #endregion
@@ -58,17 +60,16 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 
         private void ReplyResult()
         {
-            var receive = netWork.Receive();
-            if (receive == null) return;
-            if (receive is InputAction inputAction)
-            {
-                var clientID = inputAction.ClientID;
-                var playerID = inputAction.PlayerID;
-                var client   = clientList.Find(c => c.ClientID == clientID);
-                var player   = client.GetPlayerByID(playerID);
-                player.Move(inputAction.X);
-                Debug.Log("ReplyResult");
-            }
+            // UniTask<InputAction> inputAction = netWork.Receive();
+            // inputAction.GetAwaiter()
+            // if (inputAction == null) return;
+            //
+            // var clientID = inputAction.ClientID;
+            // var playerID = inputAction.PlayerID;
+            // var client   = clientList.Find(c => c.ClientID == clientID);
+            // var player   = client.GetPlayerByID(playerID);
+            // player.Move(inputAction.X);
+            // Debug.Log("ReplyResult");
         }
 
     #endregion

@@ -63,7 +63,7 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 
         public void Tick()
         {
-            if (controlSystem.MoveLeft()) MoveAction(mainBallID, -1);
+            if (controlSystem.MoveLeft()) MoveAction(mainBallID,  -1);
             if (controlSystem.MoveRight()) MoveAction(mainBallID, 1);
             // var playerList = ballDict.Values.ToList();
             // MediumManager.Instance.UpdateWorld(clientID, playerList);
@@ -73,20 +73,20 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 
     #region ========== Private Methods ==========
 
-        private void MoveAction(string ID, float X)
+        private void MoveAction(string playerID, float X)
         {
             var inputAction = new InputAction();
             inputAction.ClientID  = clientID;
-            inputAction.PlayerID  = ID;
+            inputAction.PlayerID  = playerID;
             inputAction.CacheTime = new CacheTime();
             inputAction.X         = X;
-            server.NetWork.Send(lag, inputAction);
+            inputAction.Lag       = lag;
+            Debug.Log($"MoveAction");
+            server.NetWork.Send(inputAction);
         }
 
     #endregion
 
-        public void AddPlayer(PlayerData playerData)
-        {
-        }
+        public void AddPlayer(PlayerData playerData) { }
     }
 }
