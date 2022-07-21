@@ -849,7 +849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientALag: 250
   clientBLag: 150
-  serverUpdateTimes: 3
+  serverUpdateTimes: 1
   ballPrefab: {fileID: 3109738266173240289, guid: 4cbdcb73733c8cd4d8adffe4c3e6f4b7, type: 3}
   clientA_SpawnPoints:
   - {fileID: 1295782762}
