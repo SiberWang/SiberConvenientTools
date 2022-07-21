@@ -1,0 +1,17 @@
+{
+    "name": "SiberLocalServer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:af8c9ffddd5d8434f9687aed06fb5305",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
