@@ -15,6 +15,9 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
     {
     #region ========== Public Variables ==========
 
+        /// <summary> 客戶端預測 Client-side prediction </summary>
+        public bool SidePrediction;
+
         public int Lag => lag;
 
         public string ClientID => clientID;
@@ -108,8 +111,16 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
             inputAction.inputNumber = inputNumber;
             inputAction.X           = x;
 
-            inputList.Add(inputAction);
             server.NetWork.Send(lag, inputAction).Forget();
+
+            if (SidePrediction)
+            {
+                var playerData    = playerDataList.Find(d => d.ID.Equals(inputAction.PlayerID));
+                var ballBehaviour = GetPlayerByID(playerData.ID).GetComponent<BallBehaviour>();
+                ballBehaviour.MoveX(x);
+            }
+
+            inputList.Add(inputAction);
         }
 
     #endregion

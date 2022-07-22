@@ -26,6 +26,11 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
         [BoxGroup(GroupMain)]
         [SerializeField] private float serverUpdateTimes;
 
+        [BoxGroup(GroupMain)]
+        [SerializeField] private bool clientA_sidePrediction; //客戶端預測 Client-side prediction
+        [BoxGroup(GroupMain)]
+        [SerializeField] private bool clientB_sidePrediction;
+
         [FoldoutGroup(GroupPlayer)]
         [SerializeField] private GameObject ballPrefab;
 
@@ -101,9 +106,10 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 
             clientList[0].Tick();
             clientList[1].Tick();
-
-            clientAInputText.text = $"Non-acknowledged Inputs:{clientList[0].InputList.Count}";
-            clientBInputText.text = $"Non-acknowledged Inputs:{clientList[1].InputList.Count}";
+            clientList[0].SidePrediction = clientA_sidePrediction;
+            clientList[1].SidePrediction = clientB_sidePrediction;
+            clientAInputText.text        = $"Non-acknowledged Inputs:{clientList[0].InputList.Count}";
+            clientBInputText.text        = $"Non-acknowledged Inputs:{clientList[1].InputList.Count}";
         }
 
         public void SetLastInputText(string client, int number)

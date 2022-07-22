@@ -7,10 +7,17 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
     /// </summary>
     public class BallBehaviour : MonoBehaviour
     {
-        public void Move(Vector2 pos)
+        public void MoveX(float x)
         {
             var defaultX = transform.position.x;
             var defaultY = transform.position.y;
+            transform.position = new Vector2(defaultX + x, defaultY);
+        }
+
+        public void SetPos(Vector2 pos)
+        {
+            // var defaultX = transform.position.x;
+            // var defaultY = transform.position.y;
             transform.position = pos;
         }
     }

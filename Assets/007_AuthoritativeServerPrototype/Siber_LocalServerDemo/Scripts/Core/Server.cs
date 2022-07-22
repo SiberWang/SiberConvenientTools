@@ -106,7 +106,7 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
             var playerData = playerDataList.Find(d => d.ID.Equals(inputAction.PlayerID));
             playerData.Pos.x += inputAction.X;
             var ballBehaviour = GetPlayerByID(playerData.ID).GetComponent<BallBehaviour>();
-            ballBehaviour.Move(playerData.Pos);
+            ballBehaviour.SetPos(playerData.Pos);
             MediumManager.Instance.SetLastInputText(inputAction.ClientID, inputAction.inputNumber);
         }
 
@@ -115,7 +115,7 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
             var playerData = client.PlayerDataList.Find(d => d.ID.Equals(inputAction.PlayerID));
             playerData.Pos.x += inputAction.X;
             var ballBehaviour = client.GetPlayerByID(playerData.ID).GetComponent<BallBehaviour>();
-            ballBehaviour.Move(playerData.Pos);
+            ballBehaviour.SetPos(playerData.Pos);
         }
 
     #endregion
