@@ -21,6 +21,8 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
             this.index = index;
         }
 
+        public int Index => index;
+
     #endregion
 
     #region ========== Public Methods ==========

@@ -6,6 +6,6 @@
         public string    ClientID;
         public string    PlayerID;
         public float     X;
-        public float     Lag;
+        public int       inputNumber; // 這個就是 #1 #2 編號的概念
     }
 }

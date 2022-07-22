@@ -1,4 +1,6 @@
-﻿namespace Demo
+﻿using UnityEngine;
+
+namespace Demo
 {
     using System.Collections.Generic;
 
@@ -8,6 +10,7 @@
 
         public void Send(int lag_ms, object message)
         {
+            Debug.Log($"Send: lag_ms:{lag_ms}");
             this.messages.Add(new Message()
             {
                 recv_ts = new Date() + (ulong)lag_ms,

@@ -1,35 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 {
     public class NetWork
     {
+    #region ========== Public Variables ==========
+
+        public List<InputAction> ActionList => actionList;
+
+    #endregion
+
+    #region ========== Private Variables ==========
+
         private List<InputAction> actionList = new List<InputAction>(); // 紀錄要執行的事件
 
-        public async UniTask Send(InputAction inputAction)
-        {
-            float delayTime = inputAction.Lag;
-            await UniTask.Delay(TimeSpan.FromSeconds(delayTime));
-            actionList.Add(inputAction);
-            Debug.Log($"actionList :{actionList.Count}");
-        }
+    #endregion
 
-        public async UniTask<InputAction> Receive()
+    #region ========== Public Methods ==========
+
+        public async UniTask Send(int lag, InputAction inputAction)
         {
-            Debug.Log($"actionList :{actionList.Count}");
+            await UniTask.Delay(lag / 2); // 傳送延遲 ms
+            actionList.Add(inputAction);  // 增加至 代辦清單
+            CatchYouBug.DeShow($"Send DelayTime [{lag / 2}] ms , ActionList :{actionList.Count} , from ClientID:[{inputAction.ClientID}]",
+                               "NetWork<Send>");
+        }
+        
+        public InputAction Receive()
+        {
             for (var i = 0; i < actionList.Count; i++)
             {
-                float delayTime = actionList[i].CacheTime.Sec;
-                await UniTask.Delay(TimeSpan.FromSeconds(delayTime));
+                var inputAction = actionList[i];
                 actionList.RemoveAt(i);
-                return actionList[i];
+                CatchYouBug.DeShow($"Receive Action[{i}] , ActionList :{actionList.Count}", "NetWork<Receive>");
+                return inputAction;
             }
 
             return null;
         }
+
+    #endregion
     }
 }

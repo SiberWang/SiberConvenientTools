@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -20,7 +19,9 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
         private NetWork netWork;
 
         private readonly List<Client>     clientList;
-        private readonly List<PlayerData> playerList;
+        private readonly List<PlayerData> playerDataList;
+
+        private Dictionary<string, GameObject> playerDict = new Dictionary<string, GameObject>();
 
     #endregion
 
@@ -28,9 +29,9 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 
         public Server()
         {
-            netWork    = new NetWork();
-            clientList = new List<Client>();
-            playerList = new List<PlayerData>();
+            netWork        = new NetWork();
+            clientList     = new List<Client>();
+            playerDataList = new List<PlayerData>();
         }
 
     #endregion
@@ -42,34 +43,79 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
             clientList.Add(clientID);
         }
 
-        public void AddPlayer(PlayerData playerData)
+        public void AddPlayer(PlayerData playerData, GameObject gameObject)
         {
-            playerList.Add(playerData);
+            playerDict.Add(playerData.ID, gameObject);
+            playerDataList.Add(playerData);
         }
 
-        public void Tick()
+        public async void Tick()
         {
-            Debug.Log("Server Update");
-            ReplyResult();
-            // MediumManager.Instance.UpdateWorld("0", playerList);
+            await ReplyResult();
+        }
+
+        public GameObject GetPlayerByID(string ID)
+        {
+            if (string.IsNullOrEmpty(ID)) return null;
+            if (playerDict.ContainsKey(ID))
+                return playerDict[ID];
+            return null;
         }
 
     #endregion
 
     #region ========== Private Methods ==========
 
-        private void ReplyResult()
+        /// <summary> 回覆事件結果 </summary>
+        private async UniTask ReplyResult()
         {
-            // UniTask<InputAction> inputAction = netWork.Receive();
-            // inputAction.GetAwaiter()
-            // if (inputAction == null) return;
-            //
-            // var clientID = inputAction.ClientID;
-            // var playerID = inputAction.PlayerID;
-            // var client   = clientList.Find(c => c.ClientID == clientID);
-            // var player   = client.GetPlayerByID(playerID);
-            // player.Move(inputAction.X);
-            // Debug.Log("ReplyResult");
+            var inputAction = netWork.Receive();
+            if (inputAction == null) return;
+
+            MoveServerPlayer(inputAction);        // 更新 Server 的顯示
+            await ReceiveClient(inputAction);     // 傳回 主要接收的 Client (延遲) 更新顯示
+            await UpdateOtherClient(inputAction); // 傳回 其他的 Clients (延遲) 更新顯示
+        }
+
+        private async UniTask ReceiveClient(InputAction inputAction)
+        {
+            var client = clientList.Find(c => c.ClientID.Equals(inputAction.ClientID));
+            client.InputList.Clear();
+            netWork.ActionList.Clear();
+            await UniTask.Delay(client.Lag / 2);
+            MoveClientPlayer(client, inputAction);
+            CatchYouBug.DeShow($"Receive DelayTime :[{client.Lag / 2}] ms", $"Receive to ClientID:{inputAction.ClientID}");
+        }
+
+        private async UniTask UpdateOtherClient(InputAction inputAction)
+        {
+            // 可能就 N 個客戶端
+            var otherClients = clientList.Where(c => !c.ClientID.Equals(inputAction.ClientID)).ToList();
+            for (int i = 0; i < otherClients.Count; i++)
+            {
+                await UniTask.Delay(otherClients[i].Lag / 2);
+                MoveClientPlayer(otherClients[i], inputAction);
+                // CatchYouBug.DeShow($"Update ClientID:{otherClients[i].ClientID} DelayTime :[{otherClients[i].Lag}] ms",
+                //                    $"Receive From Server , ClientID:{inputAction.ClientID}");
+            }
+        }
+
+        private void MoveServerPlayer(InputAction inputAction)
+        {
+            Debug.Log($"inputAction.inputNumber:{inputAction.inputNumber}");
+            var playerData = playerDataList.Find(d => d.ID.Equals(inputAction.PlayerID));
+            playerData.Pos.x += inputAction.X;
+            var ballBehaviour = GetPlayerByID(playerData.ID).GetComponent<BallBehaviour>();
+            ballBehaviour.Move(playerData.Pos);
+            MediumManager.Instance.SetLastInputText(inputAction.ClientID, inputAction.inputNumber);
+        }
+
+        private void MoveClientPlayer(Client client, InputAction inputAction)
+        {
+            var playerData = client.PlayerDataList.Find(d => d.ID.Equals(inputAction.PlayerID));
+            playerData.Pos.x += inputAction.X;
+            var ballBehaviour = client.GetPlayerByID(playerData.ID).GetComponent<BallBehaviour>();
+            ballBehaviour.Move(playerData.Pos);
         }
 
     #endregion

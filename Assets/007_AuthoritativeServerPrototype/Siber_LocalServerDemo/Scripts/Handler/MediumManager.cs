@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
 using UnityTimer;
 
@@ -14,15 +15,14 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
         private const string GroupMain   = "Main Setting";
         private const string GroupPlayer = "Player Setting";
         private const string GroupSpawn  = "SpawnPoints";
+        private const string GroupUI     = "UISetting";
 
     #region ========== Private Variables ==========
 
         [BoxGroup(GroupMain)]
         [SerializeField] private int clientALag;
-
         [BoxGroup(GroupMain)]
         [SerializeField] private int clientBLag;
-
         [BoxGroup(GroupMain)]
         [SerializeField] private float serverUpdateTimes;
 
@@ -31,12 +31,17 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 
         [FoldoutGroup(GroupSpawn)]
         [SerializeField] private List<Transform> clientA_SpawnPoints;
-
         [FoldoutGroup(GroupSpawn)]
         [SerializeField] private List<Transform> clientB_SpawnPoints;
-
         [FoldoutGroup(GroupSpawn)]
         [SerializeField] private List<Transform> server_SpawnPoints;
+
+        [FoldoutGroup(GroupUI)]
+        [SerializeField] private TMP_Text clientAInputText;
+        [FoldoutGroup(GroupUI)]
+        [SerializeField] private TMP_Text clientBInputText;
+        [FoldoutGroup(GroupUI)]
+        [SerializeField] private TMP_Text ServerInputText;
 
         private List<Client> clientList = new List<Client>();
         private Server       server;
@@ -44,7 +49,11 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
         private string       playerB_ID;
 
         private float tempUpdateTimes;
+        private int   tempClientALag;
+        private int   tempClientBLag;
         private Timer serverTimer;
+        private int   playerANumber;
+        private int   playerBNumber;
 
     #endregion
 
@@ -55,11 +64,13 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
             server = new Server();
             CreateClients(); // 創立 A , B 客戶端
             CreatePlayers(); // 創立 A , B 角色
+            ServerInputText.text = "Last acknowledged input: Player A: [#0] / Player B: [#0]";
         }
 
         private void Update()
         {
-            if (tempUpdateTimes != serverUpdateTimes)
+            // 處理 Server 的 Update , 依每秒更新幾次來進行
+            if (tempUpdateTimes != serverUpdateTimes) // 數值改變了在重置更新事件
             {
                 // Update N times per second
                 if (serverTimer != null) serverTimer.Cancel();
@@ -67,6 +78,7 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
                     (
                      duration: UpdateTimeBySec(),
                      onComplete: server.Tick,
+                     onUpdate: null,
                      isLooped: true,
                      useRealTime: false
                     );
@@ -75,13 +87,30 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
             }
 
             // 處理 Client 的 Update
-            for (var i = 0; i < clientList.Count; i++)
+            if (tempClientALag != clientALag)
             {
-                var client = clientList[i];
-                if (i == 0) client.SetLag(clientALag);
-                if (i == 1) client.SetLag(clientBLag);
-                client.Tick();
+                clientList[0].SetLag(clientALag);
+                tempClientALag = clientALag;
             }
+
+            if (tempClientALag != clientBLag)
+            {
+                clientList[1].SetLag(clientBLag);
+                tempClientALag = clientBLag;
+            }
+
+            clientList[0].Tick();
+            clientList[1].Tick();
+
+            clientAInputText.text = $"Non-acknowledged Inputs:{clientList[0].InputList.Count}";
+            clientBInputText.text = $"Non-acknowledged Inputs:{clientList[1].InputList.Count}";
+        }
+
+        public void SetLastInputText(string client, int number)
+        {
+            if (client == "1") playerANumber = number;
+            if (client == "2") playerBNumber = number;
+            ServerInputText.text = $"Last acknowledged input: Player A: [#{playerANumber}] / Player B: [#{playerBNumber}]";
         }
 
     #endregion
@@ -100,7 +129,7 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
             for (int i = 0; i < 2; i++)
             {
                 // 建立 Client A , B , 並記錄到到 List
-                var clientID      = i == 1 ? "1" : "2";                          // 客戶端ID
+                var clientID      = $"{i + 1}";                                  // 客戶端ID
                 var controlSystem = new ControlSystem(i);                        // 控制器
                 var client        = new Client(server, controlSystem, clientID); // 創立客戶端
                 clientList.Add(client);
@@ -112,52 +141,39 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
         private void CreatePlayers()
         {
             // 創立角色資料 PlayerA,PlayerB
-            playerA_ID = Guid.NewGuid().ToString();
-            playerB_ID = Guid.NewGuid().ToString();
-            CreatePlayerToWorld(clientA_SpawnPoints);
-            CreatePlayerToWorld(clientB_SpawnPoints);
-            CreatePlayerToWorld(server_SpawnPoints);
+            playerA_ID = "A"; // 藍球
+            playerB_ID = "B"; // 紅球
+            CreatePlayerToClient(clientA_SpawnPoints, clientList[0]);
+            CreatePlayerToClient(clientB_SpawnPoints, clientList[1]);
+            CreatePlayerToServer(server_SpawnPoints);
         }
 
-        private void CreatePlayerToWorld(List<Transform> serverSpawnPoints)
+        private void CreatePlayerToServer(List<Transform> serverSpawnPoints)
         {
             for (int i = 0; i < serverSpawnPoints.Count; i++)
             {
-                var id   = i == 0 ? playerA_ID : playerB_ID;
-                var ball = CreatePlayer(id, clientList[i], serverSpawnPoints[i]);
+                var playerID   = i == 0 ? playerA_ID : playerB_ID;
+                var playerData = new PlayerData(playerID, serverSpawnPoints[i].position);
+                var ball       = Instantiate(ballPrefab, playerData.Pos, Quaternion.identity);
                 if (ball.TryGetComponent<SpriteRenderer>(out var spriteRenderer)) // 變化角色顏色
                     spriteRenderer.color = i == 0 ? Color.blue : Color.red;
+                server.AddPlayer(playerData, ball);
             }
         }
 
-        private GameObject CreatePlayer(string id, Client client, Transform serverSpawnPoint)
+        private void CreatePlayerToClient(List<Transform> serverSpawnPoints, Client client)
         {
-            var playerData = new PlayerData(id, serverSpawnPoint.position);
-            server.AddPlayer(playerData);
-            client.AddPlayer(playerData);
-            var ball = Instantiate(ballPrefab, playerData.Pos, Quaternion.identity);
-            return ball;
+            for (int i = 0; i < serverSpawnPoints.Count; i++)
+            {
+                var playerID   = i == 0 ? playerA_ID : playerB_ID;
+                var playerData = new PlayerData(playerID, serverSpawnPoints[i].position);
+                var ball       = Instantiate(ballPrefab, playerData.Pos, Quaternion.identity);
+                if (ball.TryGetComponent<SpriteRenderer>(out var spriteRenderer)) // 變化角色顏色
+                    spriteRenderer.color = i == 0 ? Color.blue : Color.red;
+                client.AddPlayer(playerData, ball);
+            }
         }
 
     #endregion
-
-        public void UpdateWorld(string ID, List<PlayerData> playerList)
-        {
-            List<Transform> transforms;
-            if (ID == "0") transforms = server_SpawnPoints;
-            if (ID == "1") transforms = clientA_SpawnPoints;
-            if (ID == "2") transforms = clientB_SpawnPoints;
-
-            var client = clientList.Find(c => c.ClientID == ID);
-            if (client != null)
-            {
-                for (int i = 0; i < playerList.Count; i++)
-                {
-                    PlayerData playerData    = playerList[i];
-                    var        ballBehaviour = client.GetPlayerByID(playerData.ID);
-                    ballBehaviour.Move(playerData.Pos.x);
-                }
-            }
-        }
     }
 }

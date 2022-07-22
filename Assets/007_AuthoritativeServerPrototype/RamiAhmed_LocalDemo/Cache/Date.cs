@@ -10,7 +10,7 @@
 
         public Date()
         {
-            var t = (DateTime.Now.ToUniversalTime() - _st);
+            TimeSpan t = (DateTime.Now.ToUniversalTime() - _st);
             this.milliseconds = (ulong)t.TotalMilliseconds;
         }
 

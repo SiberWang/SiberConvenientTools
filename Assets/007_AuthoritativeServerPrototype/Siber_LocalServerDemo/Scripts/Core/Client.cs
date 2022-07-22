@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityTimer;
+using Timer = System.Threading.Timer;
 
 namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 {
@@ -14,9 +17,11 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 
         public int Lag => lag;
 
-        public NetWork NetWork => netWork;
-
         public string ClientID => clientID;
+
+        public List<PlayerData> PlayerDataList => playerDataList;
+
+        public List<InputAction> InputList => inputList;
 
     #endregion
 
@@ -24,13 +29,19 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 
         private ControlSystem controlSystem;
 
-        private Dictionary<string, BallBehaviour> ballDict = new Dictionary<string, BallBehaviour>();
+        private List<InputAction> inputList      = new List<InputAction>();
+        private List<PlayerData>  playerDataList = new List<PlayerData>();
 
-        private NetWork netWork;
-        private Server  server;
-        private string  clientID; // clientA="1" , clientB="2"
-        private string  mainBallID;
-        private int     lag;
+        private Dictionary<string, GameObject> playerDict = new Dictionary<string, GameObject>();
+
+        private Server server;
+        private string clientID; // clientA="1" , clientB="2"
+        private string MainPlayerID;
+        private int    lag; //ms
+        private int    inputNumber;
+
+        private ulong updateRate;
+        private ulong nextUpdateTime;
 
     #endregion
 
@@ -38,21 +49,24 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
 
         public Client(Server server, ControlSystem controlSystem, string clientID)
         {
-            netWork            = new NetWork();
             this.clientID      = clientID;
             this.server        = server;
             this.controlSystem = controlSystem;
+            updateRate         = 60; // 預設更新率為60幀
+            // CatchYouBug.DeShow($"ClientID :[{clientID}] , ControlSystem Index :[{controlSystem.Index}]");
         }
 
     #endregion
 
     #region ========== Public Methods ==========
 
-        public BallBehaviour GetPlayerByID(string ID)
+        public void Tick()
         {
-            if (ballDict.ContainsKey(ID))
-                return ballDict[ID];
-            return null;
+            var now = CacheTime.Now();
+            if (now < nextUpdateTime) return;
+            if (controlSystem.MoveLeft()) MoveAction(MainPlayerID, -1);
+            else if (controlSystem.MoveRight()) MoveAction(MainPlayerID, 1);
+            nextUpdateTime = now + updateRate;
         }
 
         public void SetLag(int value)
@@ -60,33 +74,44 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
             lag = value;
         }
 
-
-        public void Tick()
+        public void AddPlayer(PlayerData playerData, GameObject gameObject)
         {
-            if (controlSystem.MoveLeft()) MoveAction(mainBallID,  -1);
-            if (controlSystem.MoveRight()) MoveAction(mainBallID, 1);
-            // var playerList = ballDict.Values.ToList();
-            // MediumManager.Instance.UpdateWorld(clientID, playerList);
+            playerDict.Add(playerData.ID, gameObject);
+            playerDataList.Add(playerData);
+            if (playerDataList.Count >= 2)
+            {
+                if (clientID == "1") MainPlayerID = playerDataList[0].ID;
+                if (clientID == "2") MainPlayerID = playerDataList[1].ID;
+            }
+        }
+
+        public GameObject GetPlayerByID(string ID)
+        {
+            if (string.IsNullOrEmpty(ID)) return null;
+            if (playerDict.ContainsKey(ID))
+                return playerDict[ID];
+            return null;
         }
 
     #endregion
 
     #region ========== Private Methods ==========
 
-        private void MoveAction(string playerID, float X)
+        private void MoveAction(string playerID, float x)
         {
+            inputNumber++;
             var inputAction = new InputAction();
-            inputAction.ClientID  = clientID;
-            inputAction.PlayerID  = playerID;
-            inputAction.CacheTime = new CacheTime();
-            inputAction.X         = X;
-            inputAction.Lag       = lag;
-            Debug.Log($"MoveAction");
-            server.NetWork.Send(inputAction);
+
+            inputAction.ClientID    = clientID;
+            inputAction.PlayerID    = playerID;
+            inputAction.CacheTime   = new CacheTime();
+            inputAction.inputNumber = inputNumber;
+            inputAction.X           = x;
+
+            inputList.Add(inputAction);
+            server.NetWork.Send(lag, inputAction).Forget();
         }
 
     #endregion
-
-        public void AddPlayer(PlayerData playerData) { }
     }
 }

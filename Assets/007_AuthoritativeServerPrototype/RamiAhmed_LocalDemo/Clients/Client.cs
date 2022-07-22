@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Demo
 {
@@ -58,6 +59,7 @@ namespace Demo
         public void AdditionTick()
         {
             var now = new Date();
+            Debug.Log($"AdditionTick : {now.milliseconds}");
             if (now < nextUpdate)
             {
                 return;
@@ -65,6 +67,7 @@ namespace Demo
 
             nextUpdate = now + updateRate;
             Update();
+            Debug.Log($"AdditionTick : {now.milliseconds} / {nextUpdate}");
         }
 
     #endregion
@@ -94,8 +97,8 @@ namespace Demo
             return "Non-acknowledged inputs: " + pendingInputs.Count;
         }
 
-        // Get inputs and send them to the server.
-        // If enabled, do client-side prediction.
+        // Get inputs and send them to the server. 獲得輸入並將它們發送到服務器
+        // If enabled, do client-side prediction.  如果啟用，進行客戶端預測
         private void ProcessInputs()
         {
             // 計算自上次更新以來的增量時間 (Compute delta time since last update.)
