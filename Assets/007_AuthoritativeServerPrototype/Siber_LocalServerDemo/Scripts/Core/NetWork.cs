@@ -1,33 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
-namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
+namespace LocalServerDemo.Scripts
 {
     public class NetWork
     {
     #region ========== Public Variables ==========
 
-        public List<InputAction> ActionList => actionList;
+        public List<EventArgs> ActionList => actionList;
 
     #endregion
 
     #region ========== Private Variables ==========
 
-        private List<InputAction> actionList = new List<InputAction>(); // 紀錄要執行的事件
+        private List<EventArgs> actionList = new List<EventArgs>(); // 紀錄要執行的事件
 
     #endregion
 
     #region ========== Public Methods ==========
 
-        public async UniTask Send(int lag, InputAction inputAction)
+        /// <summary> 發送事件 </summary>
+        /// <param name="lag">網路延遲</param>
+        /// <param name="eventArgs">特定事件</param>
+        public async UniTask Send(int lag, EventArgs eventArgs)
         {
-            await UniTask.Delay(lag / 2); // 傳送延遲 ms
-            actionList.Add(inputAction);  // 增加至 代辦清單
-            CatchYouBug.DeShow($"Send DelayTime [{lag / 2}] ms , ActionList :{actionList.Count} , from ClientID:[{inputAction.ClientID}]",
-                               "NetWork<Send>");
+            await UniTask.Delay(lag / 2);
+            actionList.Add(eventArgs);
+            CatchYouBug.DeShow($"Send DelayTime [{lag / 2}] ms , ActionList :{actionList.Count}", "NetWork[Send]");
         }
-        
-        public InputAction Receive()
+
+        /// <summary> 回覆結果 </summary>
+        /// <returns>特定事件</returns>
+        public EventArgs Receive()
         {
             for (var i = 0; i < actionList.Count; i++)
             {

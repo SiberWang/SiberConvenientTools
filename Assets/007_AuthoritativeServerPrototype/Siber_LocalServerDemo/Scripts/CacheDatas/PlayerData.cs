@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
+namespace LocalServerDemo.Scripts
 {
     /// <summary>
     /// 這邊在舉例 Entity
@@ -14,6 +14,11 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
         {
             ID  = id;
             Pos = pos;
+        }
+
+        public void MoveX(float x)
+        {
+            Pos.x += x;
         }
     }
 }

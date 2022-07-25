@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
+namespace LocalServerDemo.Scripts
 {
     /// <summary>
     /// 只記錄著 View 端要做的行為
     /// </summary>
-    public class BallBehaviour : MonoBehaviour
+    public class UnityComponent : MonoBehaviour
     {
         public void MoveX(float x)
         {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
+namespace LocalServerDemo.Scripts
 {
     /// <summary>
     /// 控制器 , 目前記錄移動相關
@@ -8,6 +8,12 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
     /// </summary>
     public class ControlSystem
     {
+    #region ========== Public Variables ==========
+
+        public int Index => index;
+
+    #endregion
+
     #region ========== Private Variables ==========
 
         private int index;
@@ -20,8 +26,6 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
         {
             this.index = index;
         }
-
-        public int Index => index;
 
     #endregion
 

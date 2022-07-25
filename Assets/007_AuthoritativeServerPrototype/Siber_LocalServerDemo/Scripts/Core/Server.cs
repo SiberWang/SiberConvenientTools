@@ -1,27 +1,33 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using LocalServerDemo.Repositorys;
+using UnityTimer;
 
-namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
+namespace LocalServerDemo.Scripts
 {
     public class Server
     {
+    #region ========== delegate ==========
+
+        public delegate void ServerReceive(EventArgs eventArgs);
+
+        public delegate void ServerUpdate(EventArgs eventArgs);
+
+        private ServerReceive serverReceiveDelegate; // Server Receive 回傳回覆事件
+        private ServerUpdate  serverUpdateDelegate;  // Server 同步更新事件
+
+    #endregion
+
     #region ========== Public Variables ==========
 
-        public NetWork NetWork => netWork;
+        public UserRepository UserRepository => userRepository;
 
     #endregion
 
     #region ========== Private Variables ==========
 
-        private int     nextUpdateTime;
-        private NetWork netWork;
-
-        private readonly List<Client>     clientList;
-        private readonly List<PlayerData> playerDataList;
-
-        private Dictionary<string, GameObject> playerDict = new Dictionary<string, GameObject>();
+        private UpdateTimer    updateTimer;
+        private NetWork        netWork;
+        private UserRepository userRepository;
 
     #endregion
 
@@ -30,92 +36,75 @@ namespace _007_AuthoritativeServerPrototype.Siber_LocalServerDemo.Scripts
         public Server()
         {
             netWork        = new NetWork();
-            clientList     = new List<Client>();
-            playerDataList = new List<PlayerData>();
+            userRepository = new UserRepository();
+            updateTimer    = new UpdateTimer(Tick);
+            AddUpdateCallBack(OnUpdateServerView);
         }
 
     #endregion
 
     #region ========== Public Methods ==========
 
-        public void AddClient(Client clientID)
+        /// <summary> 增加回傳事件 </summary>
+        /// <param name="someDelegate"> 要放入的方法 </param>
+        public void AddReceiveCallBack(ServerReceive someDelegate)
         {
-            clientList.Add(clientID);
+            serverReceiveDelegate += someDelegate;
         }
 
-        public void AddPlayer(PlayerData playerData, GameObject gameObject)
+        /// <summary> 增加Server更新事件 </summary>
+        /// <param name="someDelegate"> 要放入的方法 </param>
+        public void AddUpdateCallBack(ServerUpdate someDelegate)
         {
-            playerDict.Add(playerData.ID, gameObject);
-            playerDataList.Add(playerData);
+            serverUpdateDelegate += someDelegate;
         }
 
-        public async void Tick()
+        public async UniTask Send(int lag, EventArgs eventArgs)
         {
-            await ReplyResult();
+            await netWork.Send(lag, eventArgs);
+            if (eventArgs is InputEvent inputEvent)
+                CatchYouBug.DeShow($"Get from ClientID:[{inputEvent.ClientID}]", "Server");
         }
 
-        public GameObject GetPlayerByID(string ID)
+        /// <summary> 更新率 </summary>
+        public void SetUpdateTimes(float serverUpdateTimes)
         {
-            if (string.IsNullOrEmpty(ID)) return null;
-            if (playerDict.ContainsKey(ID))
-                return playerDict[ID];
-            return null;
+            updateTimer.Cancel();
+            updateTimer.SetNewUpdateTimes(serverUpdateTimes);
         }
 
     #endregion
 
     #region ========== Private Methods ==========
 
-        /// <summary> 回覆事件結果 </summary>
-        private async UniTask ReplyResult()
+        private void Tick()
         {
             var inputAction = netWork.Receive();
             if (inputAction == null) return;
-
-            MoveServerPlayer(inputAction);        // 更新 Server 的顯示
-            await ReceiveClient(inputAction);     // 傳回 主要接收的 Client (延遲) 更新顯示
-            await UpdateOtherClient(inputAction); // 傳回 其他的 Clients (延遲) 更新顯示
+            serverUpdateDelegate?.Invoke(inputAction);  // 優先更新 Server 的角色位置顯示
+            serverReceiveDelegate?.Invoke(inputAction); // 更新主客戶端 -> 其他客戶端顯示
         }
 
-        private async UniTask ReceiveClient(InputAction inputAction)
+    #endregion
+
+    #region ========== Events ==========
+
+        private void OnUpdateServerView(EventArgs eventArgs)
         {
-            var client = clientList.Find(c => c.ClientID.Equals(inputAction.ClientID));
-            client.InputList.Clear();
             netWork.ActionList.Clear();
-            await UniTask.Delay(client.Lag / 2);
-            MoveClientPlayer(client, inputAction);
-            CatchYouBug.DeShow($"Receive DelayTime :[{client.Lag / 2}] ms", $"Receive to ClientID:{inputAction.ClientID}");
+            UpdateTestView(eventArgs);
         }
 
-        private async UniTask UpdateOtherClient(InputAction inputAction)
+        /// <summary> 更新 Server 顯示用的玩家 </summary>
+        private void UpdateTestView(EventArgs eventArgs)
         {
-            // 可能就 N 個客戶端
-            var otherClients = clientList.Where(c => !c.ClientID.Equals(inputAction.ClientID)).ToList();
-            for (int i = 0; i < otherClients.Count; i++)
+            if (eventArgs is InputEvent inputEvent)
             {
-                await UniTask.Delay(otherClients[i].Lag / 2);
-                MoveClientPlayer(otherClients[i], inputAction);
-                // CatchYouBug.DeShow($"Update ClientID:{otherClients[i].ClientID} DelayTime :[{otherClients[i].Lag}] ms",
-                //                    $"Receive From Server , ClientID:{inputAction.ClientID}");
+                var unityComponent = userRepository.GetComponent(inputEvent.PlayerID);
+                unityComponent.MoveX(inputEvent.X);
+                MediumManager.Instance.SetLastInputText(inputEvent.ClientID, inputEvent.inputNumber);
+                CatchYouBug.DeShow($"Receive to ClientID:{inputEvent.ClientID}");
             }
-        }
-
-        private void MoveServerPlayer(InputAction inputAction)
-        {
-            Debug.Log($"inputAction.inputNumber:{inputAction.inputNumber}");
-            var playerData = playerDataList.Find(d => d.ID.Equals(inputAction.PlayerID));
-            playerData.Pos.x += inputAction.X;
-            var ballBehaviour = GetPlayerByID(playerData.ID).GetComponent<BallBehaviour>();
-            ballBehaviour.SetPos(playerData.Pos);
-            MediumManager.Instance.SetLastInputText(inputAction.ClientID, inputAction.inputNumber);
-        }
-
-        private void MoveClientPlayer(Client client, InputAction inputAction)
-        {
-            var playerData = client.PlayerDataList.Find(d => d.ID.Equals(inputAction.PlayerID));
-            playerData.Pos.x += inputAction.X;
-            var ballBehaviour = client.GetPlayerByID(playerData.ID).GetComponent<BallBehaviour>();
-            ballBehaviour.SetPos(playerData.Pos);
         }
 
     #endregion
