@@ -2,30 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fb932b6-8e50-4be4-b96c-6bded8b9e7eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/InputEvents.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/InputEvents/EventArgs.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/InputEvents/EventArgs.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Repositorys.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Repositorys/ClientRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Repositorys/ClientRepository.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Repositorys/UserRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Repositorys/UserRepository.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/UpdateTimer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/UpdateTimer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SiberConvenientTools/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/BallBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/UnityComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/BallBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/UnityComponent.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/CacheDatas/CacheTime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/CacheDatas/CacheTime.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/CacheDatas/InputAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/InputEvents/InputEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/CacheDatas/InputAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/InputEvents/InputEvent.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/CacheDatas/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/CacheDatas/PlayerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scenes/LocalServerDemo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scenes/LocalServerDemo.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Core/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Core/Client.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Core/NetWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Core/NetWork.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Core/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Core/Server.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Handler/ControlSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Handler/ControlSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Handler/MediumManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/Handler/MediumManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/InputEvents/InputEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/007_AuthoritativeServerPrototype/Siber_LocalServerDemo/Scripts/InputEvents/InputEvent.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,21 +54,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "rider.run.widget.enabled.cache": "false",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.1f1\Editor\Unity.exe" />
@@ -148,7 +130,7 @@
       <workItem from="1658309957499" duration="1103000" />
       <workItem from="1658365468341" duration="25368000" />
       <workItem from="1658710000086" duration="1202000" />
-      <workItem from="1658713064901" duration="19060000" />
+      <workItem from="1658713064901" duration="22729000" />
     </task>
     <task id="LOCAL-00001" summary="Add feature - TimeHandler and ClockTimer.">
       <created>1657790565785</created>

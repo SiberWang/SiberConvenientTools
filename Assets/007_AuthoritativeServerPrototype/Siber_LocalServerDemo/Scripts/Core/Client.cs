@@ -79,6 +79,8 @@ namespace LocalServerDemo.Scripts
 
     #region ========== Private Methods ==========
 
+        //TODO: 修改做法：判斷左邊右邊，位移量固定
+        // 30FPS = 往右邊
         private void DoMove(string playerID, float x)
         {
             inputNumber++; // 發送事件次數
@@ -115,8 +117,11 @@ namespace LocalServerDemo.Scripts
             {
                 inputList.Clear();
                 await UniTask.Delay(lag / 2);
-                var player = userRepository.GetComponent(inputEvent.PlayerID);
-                player.MoveX(inputEvent.X);
+                var player   = userRepository.GetComponent(inputEvent.PlayerID);
+                var userData = userRepository.GetUserData(inputEvent.PlayerID);
+                userData.MoveX(inputEvent.X);
+                player.SetPos(userData.Pos);
+                Debug.Log($"Receive_Move : inputEvent.X:[{inputEvent.X}]");
             }
         }
 

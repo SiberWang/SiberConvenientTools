@@ -99,8 +99,8 @@ namespace LocalServerDemo.Scripts
 
         public void SetLastInputText(string client, int number)
         {
-            if (client == "1") playerANumber = number;
-            if (client == "2") playerBNumber = number;
+            if (client == "ClientA") playerANumber = number;
+            if (client == "ClientB") playerBNumber = number;
             ServerInputText.text = $"Last acknowledged input: Player A: [#{playerANumber}] / Player B: [#{playerBNumber}]";
         }
 

@@ -79,16 +79,17 @@ namespace LocalServerDemo.Scripts
 
         private void Tick()
         {
-            var inputAction = netWork.Receive();
-            if (inputAction == null) return;
-            serverUpdateDelegate?.Invoke(inputAction);  // 優先更新 Server 的角色位置顯示
-            serverReceiveDelegate?.Invoke(inputAction); // 更新主客戶端 -> 其他客戶端顯示
+            var eventArgs = netWork.Receive();
+            if (eventArgs == null) return;
+            serverUpdateDelegate?.Invoke(eventArgs);  // 優先更新 Server 的角色位置顯示
+            serverReceiveDelegate?.Invoke(eventArgs); // 更新主客戶端 -> 其他客戶端顯示
         }
 
     #endregion
 
     #region ========== Events ==========
 
+        // 客戶端預測修完
         private void OnUpdateServerView(EventArgs eventArgs)
         {
             netWork.ActionList.Clear();
@@ -100,8 +101,10 @@ namespace LocalServerDemo.Scripts
         {
             if (eventArgs is InputEvent inputEvent)
             {
-                var unityComponent = userRepository.GetComponent(inputEvent.PlayerID);
-                unityComponent.MoveX(inputEvent.X);
+                var player   = userRepository.GetComponent(inputEvent.PlayerID);
+                var userData = userRepository.GetUserData(inputEvent.PlayerID);
+                userData.MoveX(inputEvent.X);
+                player.SetPos(userData.Pos);
                 MediumManager.Instance.SetLastInputText(inputEvent.ClientID, inputEvent.inputNumber);
                 CatchYouBug.DeShow($"Receive to ClientID:{inputEvent.ClientID}");
             }
