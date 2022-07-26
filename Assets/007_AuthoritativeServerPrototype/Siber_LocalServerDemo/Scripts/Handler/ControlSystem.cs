@@ -31,23 +31,23 @@ namespace LocalServerDemo.Scripts
 
     #region ========== Public Methods ==========
 
-        public bool MoveLeft()
+        public float MoveLeftRight()
         {
             return index switch
             {
-                0 => Input.GetKey(KeyCode.LeftArrow),
-                1 => Input.GetKey(KeyCode.A),
-                _ => false
+                0 => Input.GetAxisRaw("Horizontal_Arrow"),
+                1 => Input.GetAxisRaw("Horizontal_WASD"),
+                _ => 0
             };
         }
 
-        public bool MoveRight()
+        public float MoveUpDown()
         {
             return index switch
             {
-                0 => Input.GetKey(KeyCode.RightArrow),
-                1 => Input.GetKey(KeyCode.D),
-                _ => false
+                0 => Input.GetAxisRaw("Vertical_Arrow"),
+                1 => Input.GetAxisRaw("Vertical_WASD"),
+                _ => 0
             };
         }
 
