@@ -25,9 +25,9 @@ namespace LocalServerDemo.Scripts
 
     #region ========== Private Variables ==========
 
-        private UpdateTimer    updateTimer;
-        private NetWork        netWork;
-        private UserRepository userRepository;
+        private UpdateTimer      updateTimer;
+        private UserRepository   userRepository;
+        private ClientRepository clientRepository;
 
     #endregion
 
@@ -35,9 +35,9 @@ namespace LocalServerDemo.Scripts
 
         public Server()
         {
-            netWork        = new NetWork();
-            userRepository = new UserRepository();
-            updateTimer    = new UpdateTimer(Tick);
+            userRepository   = new UserRepository();
+            updateTimer      = new UpdateTimer(Tick);
+            clientRepository = ClientRepository.Instance;
             AddUpdateCallBack(OnUpdateServerView);
         }
 
@@ -61,7 +61,8 @@ namespace LocalServerDemo.Scripts
 
         public async UniTask Send(int lag, EventArgs eventArgs)
         {
-            await netWork.Send(lag, eventArgs);
+            var client = clientRepository.GetClient(eventArgs.ClientID);
+            await client.NetWork.Send(lag, eventArgs);
             if (eventArgs is InputEvent inputEvent)
                 CatchYouBug.DeShow($"Send from Client: [{inputEvent.ClientID}]", "Server");
         }
@@ -79,17 +80,20 @@ namespace LocalServerDemo.Scripts
 
         private void Tick()
         {
-            var eventArgs = netWork.Receive();
-            if (eventArgs == null) return;
-            serverUpdateDelegate?.Invoke(eventArgs);  // 優先更新 Server 的角色位置顯示
-            serverReceiveDelegate?.Invoke(eventArgs); // 更新主客戶端 -> 其他客戶端顯示
+            var clients = clientRepository.GetClients();
+            for (int i = 0; i < clients.Count; i++)
+            {
+                var eventArgs = clients[i].NetWork.Receive();
+                if (eventArgs == null) continue;
+                serverUpdateDelegate?.Invoke(eventArgs);  // 優先更新 Server 的角色位置顯示
+                serverReceiveDelegate?.Invoke(eventArgs); // 更新主客戶端 -> 其他客戶端顯示
+            }
         }
 
     #endregion
 
     #region ========== Events ==========
-
-        // 客戶端預測修完
+        
         private void OnUpdateServerView(EventArgs eventArgs)
         {
             UpdateTestView(eventArgs);

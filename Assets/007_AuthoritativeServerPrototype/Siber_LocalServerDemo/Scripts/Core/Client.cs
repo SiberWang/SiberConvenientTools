@@ -25,6 +25,8 @@ namespace LocalServerDemo.Scripts
 
         public string MainPlayerID { get; set; }
 
+        public NetWork NetWork => netWork;
+
     #endregion
 
     #region ========== Private Variables ==========
@@ -36,6 +38,7 @@ namespace LocalServerDemo.Scripts
         private ControlSystem  controlSystem;
         private UserRepository userRepository;
         private Server         server;
+        private NetWork        netWork;
 
         private string clientID;
         private int    inputNumber;
@@ -52,7 +55,8 @@ namespace LocalServerDemo.Scripts
             this.clientID      = clientID;
             this.server        = server;
             this.controlSystem = controlSystem;
-            updateRate         = 60; // 預設更新率為60幀
+            netWork         = new NetWork(); // 網路應該是每個客戶端他自己的
+            updateRate         = 60;            // 預設更新率為60幀
             userRepository     = new UserRepository();
 
             MediumManager.Instance.AddViewCallBack(Tick);

@@ -2,6 +2,9 @@
 {
     public class EventArgs
     {
-        // 空的，拿來給其他事件繼承
+        public string    ClientID;
+        public string    PlayerID;
+        public CacheTime CacheTime;   // 紀錄時間
+        public int       inputNumber; // 這個就是 #1 #2 編號的概念
     }
 }

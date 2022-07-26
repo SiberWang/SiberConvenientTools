@@ -34,6 +34,11 @@ namespace LocalServerDemo.Repositorys
             CatchYouBug.Debug($"Can't find Client by ID:[{clientID}]", "ClientRepository");
             return null;
         }
+        
+        public List<Client> GetClients()
+        {
+            return clientList;
+        }
 
         /// <summary> 獲得指定 ID 之外的 Clients </summary>
         /// <param name="clientID">Client ID</param>
@@ -44,5 +49,6 @@ namespace LocalServerDemo.Repositorys
         }
 
     #endregion
+        
     }
 }
