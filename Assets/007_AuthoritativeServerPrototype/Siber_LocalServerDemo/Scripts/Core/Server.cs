@@ -103,8 +103,8 @@ namespace LocalServerDemo.Scripts
             {
                 var player   = userRepository.GetComponent(inputEvent.PlayerID);
                 var userData = userRepository.GetUserData(inputEvent.PlayerID);
-                userData.MoveX(inputEvent.X);
-                player.SetPos(userData.Pos);
+                userData.Move(inputEvent.Pos);
+                player.Move(userData.Pos);
                 MediumManager.Instance.SetLastInputText(inputEvent.ClientID, inputEvent.inputNumber);
                 CatchYouBug.DeShow($"Receive to ClientID:{inputEvent.ClientID}");
             }

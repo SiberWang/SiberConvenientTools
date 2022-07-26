@@ -64,8 +64,7 @@ namespace LocalServerDemo.Scripts
         {
             var now = CacheTime.Now();
             if (now < nextUpdateTime) return;
-            if (controlSystem.MoveLeft()) DoMove(MainPlayerID, -1);
-            else if (controlSystem.MoveRight()) DoMove(MainPlayerID, 1);
+            DoMove();
             nextUpdateTime = now + updateRate;
         }
 
@@ -81,29 +80,42 @@ namespace LocalServerDemo.Scripts
 
         //TODO: 修改做法：判斷左邊右邊，位移量固定
         // 30FPS = 往右邊
-        private void DoMove(string playerID, float x)
+        private void DoMove()
         {
-            inputNumber++; // 發送事件次數
-            SendToServer_Move(playerID, x);
+            var moveLeftRight = controlSystem.MoveLeftRight();
+            var moveUpDown    = controlSystem.MoveUpDown();
+            if (moveLeftRight == 0 && moveUpDown == 0) return;
+            var newPos = MovePos(moveLeftRight, moveUpDown);
 
-            // 客戶端預測 (不等 Server，先走 )
+            // 發送事件次數
+            inputNumber++;
+            SendToServer_Move(MainPlayerID, newPos);
+
+            // 客戶端預測 (不等 Server，先走！)
             if (SidePrediction)
             {
-                var player = userRepository.GetComponent(playerID);
-                player.MoveX(x);
+                var player = userRepository.GetComponent(MainPlayerID);
+                player.Move(player.transform.position + newPos);
             }
         }
 
-        private void SendToServer_Move(string playerID, float x)
+        private void SendToServer_Move(string playerID, Vector2 pos)
         {
             var inputAction = new InputEvent();
             inputAction.ClientID    = clientID;
             inputAction.PlayerID    = playerID;
             inputAction.CacheTime   = new CacheTime();
             inputAction.inputNumber = inputNumber;
-            inputAction.X           = x;
+            inputAction.Pos         = pos;
             inputList.Add(inputAction); // 客戶端暫存
             server.Send(lag, inputAction).Forget();
+        }
+
+        private Vector3 MovePos(float moveLeftRight, float moveUpDown)
+        {
+            var direction = new Vector2(moveLeftRight, moveUpDown);
+            direction.Normalize();
+            return direction * 100f * Time.deltaTime;
         }
 
     #endregion
@@ -119,9 +131,9 @@ namespace LocalServerDemo.Scripts
                 await UniTask.Delay(lag / 2);
                 var player   = userRepository.GetComponent(inputEvent.PlayerID);
                 var userData = userRepository.GetUserData(inputEvent.PlayerID);
-                userData.MoveX(inputEvent.X);
-                player.SetPos(userData.Pos);
-                Debug.Log($"Receive_Move : inputEvent.X:[{inputEvent.X}]");
+                userData.Move(inputEvent.Pos);
+                player.Move(userData.Pos);
+                Debug.Log($"Receive_Move : inputEvent.X:[{inputEvent.Pos}]");
             }
         }
 

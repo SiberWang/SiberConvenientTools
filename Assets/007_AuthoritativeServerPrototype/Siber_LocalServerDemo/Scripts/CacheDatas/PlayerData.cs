@@ -20,5 +20,10 @@ namespace LocalServerDemo.Scripts
         {
             Pos.x += x;
         }
+        
+        public void Move(Vector2 pos)
+        {
+            Pos += pos;
+        }
     }
 }

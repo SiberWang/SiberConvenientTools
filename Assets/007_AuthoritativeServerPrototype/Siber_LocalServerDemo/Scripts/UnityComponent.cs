@@ -9,15 +9,13 @@ namespace LocalServerDemo.Scripts
     {
         public void MoveX(float x)
         {
-            var defaultX = transform.position.x;
             var defaultY = transform.position.y;
-            transform.position = new Vector2(defaultX + x, defaultY);
+            var newX     = transform.position.x + x;
+            transform.position = new Vector2(newX, defaultY);
         }
 
-        public void SetPos(Vector2 pos)
+        public void Move(Vector2 pos)
         {
-            // var defaultX = transform.position.x;
-            // var defaultY = transform.position.y;
             transform.position = pos;
         }
     }
