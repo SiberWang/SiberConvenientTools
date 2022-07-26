@@ -59,6 +59,9 @@ namespace LocalServerDemo.Scripts
             serverUpdateDelegate += someDelegate;
         }
 
+        //TODO: 總覺得不應該是紀錄所有的 事件，而是Server 只知道最後事件去執行，這樣子
+        // Client : 1,2,3,4,5,6,7,8,9
+        // Server :#1,1,1,1,5,5,5,5,9,13,17
         public async UniTask Send(int lag, EventArgs eventArgs)
         {
             var client = clientRepository.GetClient(eventArgs.ClientID);

@@ -849,9 +849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53bec19a4252409cb1b7d1aa00da79f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clientALag: 100
+  clientALag: 250
   clientBLag: 150
-  serverUpdateTimes: 3
+  serverUpdateTimes: 10
   clientA_sidePrediction: 1
   clientB_sidePrediction: 0
   ballPrefab: {fileID: 3109738266173240289, guid: 4cbdcb73733c8cd4d8adffe4c3e6f4b7, type: 3}
