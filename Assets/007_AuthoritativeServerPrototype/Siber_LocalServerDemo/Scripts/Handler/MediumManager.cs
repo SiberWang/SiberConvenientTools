@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using LocalServerDemo.Repositorys;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using UnityTimer;
 
 namespace LocalServerDemo.Scripts
 {
@@ -64,6 +63,8 @@ namespace LocalServerDemo.Scripts
         private ClientRepository clientRepository;
         private Client           clientA;
         private Client           clientB;
+        private int              lastInputNumberA;
+        private int              lastInputNumberB;
 
     #endregion
 
@@ -166,8 +167,10 @@ namespace LocalServerDemo.Scripts
 
             clientA.SidePrediction = clientA_sidePrediction;
             clientB.SidePrediction = clientB_sidePrediction;
-            clientAInputText.text  = $"Non-acknowledged Inputs:{clientA.InputList.Count}";
-            clientBInputText.text  = $"Non-acknowledged Inputs:{clientB.InputList.Count}";
+            if (clientA.InputList.Count > 0) lastInputNumberA = clientA.InputList.LastOrDefault()!.inputNumber;
+            if (clientB.InputList.Count > 0) lastInputNumberB = clientB.InputList.LastOrDefault()!.inputNumber;
+            clientAInputText.text = $"Non-acknowledged Inputs:[{clientA.InputList.Count}] , Last Input: [#{lastInputNumberA}]";
+            clientBInputText.text = $"Non-acknowledged Inputs:[{clientB.InputList.Count}] , Last Input: [#{lastInputNumberB}]";
         }
 
     #endregion

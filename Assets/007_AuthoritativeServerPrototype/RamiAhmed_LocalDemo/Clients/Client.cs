@@ -27,7 +27,7 @@ namespace Demo
 
         /// <summary> 客戶端預測 Client-side prediction </summary>
         public bool client_side_prediction = false;
-        /// <summary> 服務氣對帳 Server reconciliation </summary>
+        /// <summary> 服務器對帳 Server reconciliation </summary>
         public bool server_reconciliation = false;
         /// <summary> 實體插值 Entity Interpolation </summary>
         public bool entity_interpolation = true;

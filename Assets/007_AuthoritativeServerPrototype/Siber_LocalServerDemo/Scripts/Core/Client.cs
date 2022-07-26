@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using LocalServerDemo.Repositorys;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace LocalServerDemo.Scripts
 
         /// <summary> 客戶端預測 Client-side prediction </summary>
         public bool SidePrediction;
+        /// <summary> 服務器對帳 Server reconciliation </summary>
+        public bool serverReconciliation;
 
         public int              Lag            => lag;
         public string           ClientID       => clientID;
@@ -79,7 +82,6 @@ namespace LocalServerDemo.Scripts
     #region ========== Private Methods ==========
 
         //TODO: 修改做法：判斷左邊右邊，位移量固定
-        // 30FPS = 往右邊
         private void DoMove()
         {
             var moveLeftRight = controlSystem.MoveLeftRight();
@@ -127,13 +129,12 @@ namespace LocalServerDemo.Scripts
         {
             if (args is InputEvent inputEvent)
             {
-                inputList.Clear();
+                inputList.Clear(); // 接收到指定後更新 , 消除暫存清單
                 await UniTask.Delay(lag / 2);
                 var player   = userRepository.GetComponent(inputEvent.PlayerID);
                 var userData = userRepository.GetUserData(inputEvent.PlayerID);
                 userData.Move(inputEvent.Pos);
                 player.Move(userData.Pos);
-                Debug.Log($"Receive_Move : inputEvent.X:[{inputEvent.Pos}]");
             }
         }
 

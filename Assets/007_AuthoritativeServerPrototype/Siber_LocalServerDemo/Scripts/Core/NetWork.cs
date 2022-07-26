@@ -27,7 +27,7 @@ namespace LocalServerDemo.Scripts
         {
             await UniTask.Delay(lag / 2);
             actionList.Add(eventArgs);
-            CatchYouBug.DeShow($"Send DelayTime [{lag / 2}] ms , ActionList :{actionList.Count}", "NetWork[Send]");
+            // CatchYouBug.DeShow($"Send DelayTime [{lag / 2}] ms , ActionList :{actionList.Count}", "NetWork[Send]");
         }
 
         /// <summary> 回覆結果 </summary>
@@ -38,7 +38,7 @@ namespace LocalServerDemo.Scripts
             {
                 var inputAction = actionList[i];
                 actionList.RemoveAt(i);
-                CatchYouBug.DeShow($"Receive Action[{i}] , ActionList :{actionList.Count}", "NetWork<Receive>");
+                // CatchYouBug.DeShow($"Receive Action[{i}] , ActionList :{actionList.Count}", "NetWork<Receive>");
                 return inputAction;
             }
 

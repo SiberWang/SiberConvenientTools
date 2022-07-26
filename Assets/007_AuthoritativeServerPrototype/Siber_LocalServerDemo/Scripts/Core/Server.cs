@@ -63,7 +63,7 @@ namespace LocalServerDemo.Scripts
         {
             await netWork.Send(lag, eventArgs);
             if (eventArgs is InputEvent inputEvent)
-                CatchYouBug.DeShow($"Get from ClientID:[{inputEvent.ClientID}]", "Server");
+                CatchYouBug.DeShow($"Send from Client: [{inputEvent.ClientID}]", "Server");
         }
 
         /// <summary> 更新率 </summary>
@@ -92,8 +92,8 @@ namespace LocalServerDemo.Scripts
         // 客戶端預測修完
         private void OnUpdateServerView(EventArgs eventArgs)
         {
-            netWork.ActionList.Clear();
             UpdateTestView(eventArgs);
+            // netWork.ActionList.Clear(); // 這邊註解掉，就可以讓接收到的事件，依依的完成為止
         }
 
         /// <summary> 更新 Server 顯示用的玩家 </summary>
@@ -106,7 +106,7 @@ namespace LocalServerDemo.Scripts
                 userData.Move(inputEvent.Pos);
                 player.Move(userData.Pos);
                 MediumManager.Instance.SetLastInputText(inputEvent.ClientID, inputEvent.inputNumber);
-                CatchYouBug.DeShow($"Receive to ClientID:{inputEvent.ClientID}");
+                CatchYouBug.DeShow($"Receive to Client: [{inputEvent.ClientID}]", "Server");
             }
         }
 
